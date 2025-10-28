@@ -1,12 +1,24 @@
+//src/routes/healthcare.js
+
 const express = require('express');
 const router = express.Router();
 
-const getAllHealthcareSpecializations = require('../controllers/healthcareController/getAllHealthcareSpecializations');
+// Import controllers
+const specializationsController = require('../controllers/healthcareController/specializationsController');
+// const doctorsController = require('../controllers/healthcareController/doctorsController');
+
+
+// ----------- SPECIALIZATION ROUTES -----------
 
 // GET /healthcare → list of specializations
-router.get('/', getAllHealthcareSpecializations);
+router.get('/', specializationsController);
 
-// Future dynamic route for specialization-specific data
-// router.get('/:specialization', getDoctorsBySpecialization);
+
+
+// ----------- DOCTOR ROUTES -----------
+
+
+
+
 
 module.exports = router;
