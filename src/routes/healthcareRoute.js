@@ -17,7 +17,7 @@ router.get('/:specialization/:doctor_id', doctorsController.getADoctorByIdAndSpe
 
 // POST /healthcare
 router.post('/registerDoctor', doctorsController.registerDoctor);
-router.post('/bookAppointment', doctorsController.bookAppointment);
+router.post('/bookAppointment', doctorsController.bookAppointment); //book appointment
 
 
 
