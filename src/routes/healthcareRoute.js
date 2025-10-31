@@ -8,16 +8,19 @@ const specializationsController = require('../controllers/healthcareController/s
 const doctorsController = require('../controllers/healthcareController/doctorsController');
 
 
-// ----------- SPECIALIZATION ROUTES -----------
+// ----------- HEALTHCARE ROUTES -----------
 
-// GET /healthcare → list of specializations
+// GET /healthcare
 router.get('/', specializationsController.getSpecializations); //(path, callback)
 router.get('/:specialization', doctorsController.getDoctorsBySpecialization);
+router.get('/:specialization/:doctor_id', doctorsController.getADoctorByIdAndSpecialization);
+
+// POST /healthcare
+router.post('/registerDoctor', doctorsController.registerDoctor);
+router.post('/bookAppointment', doctorsController.bookAppointment);
 
 
 
-
-// ----------- DOCTOR ROUTES -----------
 
 
 
