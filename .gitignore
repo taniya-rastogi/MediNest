@@ -37,3 +37,8 @@ pids
 # Optional: coverage/test results
 coverage/
 *.lcov
+
+#firebase ServiceKey (private key)
+config/firebaseServiceKey.json
+src/config/firebaseServiceKey.json
+tempUploads/

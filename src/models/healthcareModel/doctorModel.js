@@ -1,4 +1,4 @@
-// src/models/healthcareModel/specializationModel.js
+// src/models/healthcareModel/doctorModel.js
 
 const pool = require('../../config/db_connection');
 
