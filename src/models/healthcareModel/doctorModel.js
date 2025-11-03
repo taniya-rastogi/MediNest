@@ -7,10 +7,10 @@ const pool = require('../../config/db_connection');
 // Get doctors by specialization
 async function getDoctorsBySpecialization(specialization) {
   const sql = `
-    SELECT d.*, s.specializationName AS specialization
+    SELECT d.*, s.specialization_name AS specialization
     FROM doctors d
     JOIN specializations s ON d.specialization_id = s.id
-    WHERE s.specializationName = ?
+    WHERE s.specialization_name = ?
   `;
   const [rows] = await pool.query(sql, [specialization]);
   return rows;
@@ -19,10 +19,10 @@ async function getDoctorsBySpecialization(specialization) {
 // Get a doctor by specialization + doctor_id
 async function getADoctorByIdAndSpecialization(specialization, doctor_id) {
   const sql = `
-    SELECT d.*, s.specializationName AS specialization
+    SELECT d.*, s.specialization_name AS specialization
     FROM doctors d
     JOIN specializations s ON d.specialization_id = s.id
-    WHERE s.specializationName = ? AND d.id = ?
+    WHERE s.specialization_name = ? AND d.id = ?
   `;
   const [rows] = await pool.query(sql, [specialization, doctor_id]);
   return rows;
@@ -32,7 +32,7 @@ async function getADoctorByIdAndSpecialization(specialization, doctor_id) {
 async function registerDoctor(data) {
 
   // Get specialization ID from specialization Name
-  const getSpecSql  = `SELECT id FROM specializations WHERE specializationName = ?`;
+  const getSpecSql  = `SELECT id FROM specializations WHERE specialization_name = ?`;
   const [specRows] = await pool.query(getSpecSql , [data.specialization]);
 
   if (specRows.length === 0) {
@@ -43,24 +43,26 @@ async function registerDoctor(data) {
 
   const sql = `
     INSERT INTO doctors 
-    (full_name, specialization_id, qualification, experience_years, clinic_hospital_name, location, consultation_fee, phone, email, dp_url, bio, gender, consultation_type)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    (full_name, email, password, phone, gender, specialization_id, qualification, experience_years, clinic_hospital_name, location, consultation_type, consultation_fee, dp_url, dp_public_id, bio)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
 
   const params = [
     data.full_name,
+    data.email,
+    data.password,
+    data.phone,
+    data.gender,
     specialization_id,
     data.qualification,
     data.experience_years,
     data.clinic_hospital_name,
     data.location,
-    data.consultation_fee,
-    data.phone,
-    data.email,
+    data.consultation_type,
+    data.consultation_fee,  
     data.dp_url,
-    data.bio,
-    data.gender,
-    data.consultation_type
+    data.dp_public_id,
+    data.bio
   ];
 
   const [result] = await pool.query(sql, params);

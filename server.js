@@ -1,10 +1,3 @@
-// let http = require('http');
-// http.createServer(function (req, res) {
-//   res.writeHead(200, {'Content-Type': 'text/html'});
-//   res.end('Hello World!');
-// }).listen(8080);
-
-
 //server.js
 const express = require('express'); //express variable is a fn
 const cors = require('cors');
@@ -21,14 +14,7 @@ app.use(express.json());  // json to js obj as express can't understand json
 
 // Routes
 const healthcareRoute = require('./src/routes/healthcareRoute');
-app.use('/healthcare', healthcareRoute);//(base_path, router) (router is also a function internally):
-
-// const shoppingRoute = require('./src/routes/shopping');
-// app.use('/shopping', shoppingRoute);
-
-// const educationRoute = require('./src/routes/education');
-// app.use('/education', educationRoute);
-
+app.use("/api/healthcare", healthcareRoute);
 
 // Start server
 app.listen(port, () => {

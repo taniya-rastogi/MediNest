@@ -8,7 +8,7 @@
 // async function bookAppointment(data) {
 
 //   // Get specialization ID from specialization Name
-//   const getSpecSql  = `SELECT id FROM specializations WHERE specializationName = ?`;
+//   const getSpecSql  = `SELECT id FROM specializations WHERE specialization_name = ?`;
 //   const [specRows] = await pool.query(getSpecSql , [data.specialization]);
 
 //   if (specRows.length === 0) {

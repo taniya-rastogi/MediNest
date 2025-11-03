@@ -12,6 +12,10 @@ const upload = require('../middleware/upload'); // Multer
 const { uploadDoctorDP } = require('../controllers/healthcareController/doctorsController'); // Upload controller
 
 
+const doctorAuthController = require("../controllers/healthcareController/doctorAuthController");
+const authDoctor = require("../middleware/authDoctor");
+const doctorDashboardController = require("../controllers/healthcareController/doctorDashboardController");
+
 
 // ----------- HEALTHCARE ROUTES -----------
 
@@ -20,15 +24,15 @@ router.get('/', specializationsController.getSpecializations); //(path, callback
 router.get('/:specialization', doctorsController.getDoctorsBySpecialization);
 router.get('/:specialization/:doctor_id', doctorsController.getADoctorByIdAndSpecialization);
 
-// POST /healthcare
-// router.post('/registerDoctor', doctorsController.registerDoctor);(no longer needed)
-// router.post('/bookAppointment', appointmentsController.bookAppointment); //book appointment (Important)
-
-// Upload Doctor DP (Profile Image)
-// router.post('/uploadDoctorDP', upload.single("profileImage"), uploadDoctorDP);(Important)
 
 // POST /healthcare
 router.post('/registerDoctor', upload.single("profile_img"), doctorsController.registerDoctor);
+
+// Doctor Login
+router.post("/doctor/login", doctorAuthController.doctorLogin);
+
+// Protected doctor route example
+router.get("/doctor/dashboard", authDoctor, doctorDashboardController.getDashboard);
 
 
 

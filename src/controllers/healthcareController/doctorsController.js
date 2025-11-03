@@ -1,6 +1,7 @@
 const doctorModel = require('../../models/healthcareModel/doctorModel');
 const cloudinary = require("../../config/cloudinary");
 const fs = require("fs");
+const bcrypt = require("bcryptjs");
 
 // -------- GET Routes --------
 
@@ -11,7 +12,7 @@ const getDoctorsBySpecialization = async (req, res) => {
     const doctors = await doctorModel.getDoctorsBySpecialization(specialization);
 
     if (doctors.length === 0) {
-      return res.status(404).json({ message: 'No doctors found' });
+      return res.status(404).json({ message: 'No doctors hey found' });
     }
 
     res.status(200).json(doctors);
@@ -44,25 +45,30 @@ const registerDoctor = async (req, res) => {
   try {
     const {
       full_name,
+      email,
+      password,
+      phone,
+      gender,
       specialization,
       qualification,
       experience_years,
       clinic_hospital_name,
       location,
+      consultation_type,        //can only be (online, clinic, both)
       consultation_fee,
-      phone,
-      email,
-      bio,
-      gender,
-      consultation_type
+      bio
     } = req.body;
 
     // File from multer
     const file = req.file;
 
-    if (!full_name || !specialization || !email) {
+    if (!full_name || !specialization || !email || !password) {
       return res.status(400).json({ message: "Fill all required fields" });
     }
+
+    // ✅ Hash Password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     let dp_url = null;
     let dp_public_id = null;
@@ -77,25 +83,29 @@ const registerDoctor = async (req, res) => {
       dp_public_id = uploadResult.public_id;
 
       // ✅ Remove local temp file
-      fs.unlink(file.path, () => {});
+      fs.unlink(file.path, (err) => {
+      if (err) console.error("Temp file deletion failed:", err);
+      });
+
     }
 
     // ✅ Save doctor in MySQL
     const result = await doctorModel.registerDoctor({
       full_name,
+      email,
+      password: hashedPassword,
+      phone,
+      gender,
       specialization,
       qualification,
       experience_years,
       clinic_hospital_name,
       location,
+      consultation_type,
       consultation_fee,
-      phone,
-      email,
       dp_url,
       dp_public_id,
-      bio,
-      gender,
-      consultation_type
+      bio
     });
 
     res.status(201).json({
@@ -110,6 +120,9 @@ const registerDoctor = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
+
+
 
 module.exports = {
   getDoctorsBySpecialization,

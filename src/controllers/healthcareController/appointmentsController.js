@@ -4,15 +4,15 @@
 
 // //POST /healthcare/bookAppointment
 // const bookAppointment = async (req, res) => {
-//   const { patientName, email, phone, gender, age, consultation_type } = req.body;
+//   const { patient_name, email, phone, gender, age, consultation_type } = req.body;
 
-//   if(!patientName || (!email && !phone) || !gender || !age || !consultation_type){
+//   if(!patient_name || (!email && !phone) || !gender || !age || !consultation_type){
 //     return res.status(400).json({ message: "Fill all required fields" });
 //   }
 
 //   try {
 //     const result = await appointmentsModel.bookAppointment({
-//       patientName,
+//       patient_name,
 //       email,
 //       phone,
 //       gender,
