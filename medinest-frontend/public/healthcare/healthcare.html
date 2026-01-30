@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#d1fae5]">
+
+
+  <!-- NAVBAR -->
+  <nav class="bg-gradient-to-r from-[#0f766e] to-[#2dd4bf] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <!-- Logo -->
+        <div>
+          <h4 class="text-2xl font-semibold text-white mb-4">
+            MediNest<span class="text-green-400">+</span>
+          </h4>
+        </div>
+
+        <!-- DESKTOP MENU -->
+<div class="hidden md:flex items-center space-x-8 relative">
+
+  <a href="#" class="hover:text-gray-200">Home</a>
+  <a href="#" class="hover:text-gray-200">Services</a>
+  <a href="#" class="hover:text-gray-200">Doctors</a>
+
+  <!-- REGISTER DROPDOWN -->
+<div class="relative group z-50">
+  <button class="hover:text-gray-200 font-medium">
+    Register ▾
+  </button>
+
+  <div class="absolute right-0 mt-2 w-40 bg-white text-gray-700 rounded-lg shadow-lg
+              opacity-0 invisible group-hover:opacity-100 group-hover:visible
+              transition-all duration-200 z-50">
+    <a href="../auth/doctor_register.html"
+       class="block px-4 py-2 hover:bg-gray-100 rounded-t-lg">
+      Doctor
+    </a>
+    <a href="../register/patient_register.html"
+       class="block px-4 py-2 hover:bg-gray-100 rounded-b-lg">
+      Patient
+    </a>
+  </div>
+</div>
+
+
+  <!-- LOGIN -->
+  <a href="/auth/doctor_login.html"
+     class="bg-white text-[#0f766e] px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition">
+    Login
+  </a>
+</div>
+
+      </div>
+    </div>
+  </nav>
+
+ <!-- HERO / ADVERTISEMENT SECTION -->
+<section class="relative m-12 rounded-3xl overflow-hidden shadow-lg">
+  <div class="relative h-64 sm:h-96">
+    
+    <!-- Image 1 -->
+    <div class="absolute inset-0">
+      <img
+        class="w-full h-full object-cover animate-slide"
+        src="/medinest-frontend/images/healthcare_page_images/advertisement/healthcare_advertisement.png"
+        alt="Medical Advertisement"
+      >
+    </div>
+
+    <!-- Image 2 -->
+    <div class="absolute inset-0">
+      <img
+        class="w-full h-full object-cover animate-slide2"
+        src="/medinest-frontend/images/healthcare_page_images/advertisement/healthcare_advertisement2.png"
+        alt="Doctor Consultation"
+      >
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- SEARCH BAR -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+    <div class="flex justify-center">
+      <input type="text" placeholder="Search for doctors, services..." class="w-full md:w-2/3 p-3 border border-gray-300 rounded-l-md focus:outline-none">
+      <button class="bg-[#0f766e] text-white px-6 rounded-r-md hover:bg-[#0d6f63]">Search</button>
+    </div>
+  </div>
+  
+  <!-- SPECIALIZATION SECTION -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">Browse Your Doctor by Specialization</h2>
+    
+    <div id="specializationContainer" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+      <!-- Specialization cards will be here -->
+    </div>
+  </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-[#d1fae5] py-12">
+      <h3 class="text-3xl font-semibold text-center text-black-600 mb-8">
+        We value your 'Suggestions'
+      </h3>
+      <div class="max-w-4xl mx-auto px-6">
+        <form class="bg-white p-6 rounded-lg shadow space-y-4">
+          <input
+            type="text"
+            placeholder="Your Name"
+            class="w-full border rounded p-2"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Your Email"
+            class="w-full border rounded p-2"
+            required
+          />
+          <textarea
+            placeholder="Your Message"
+            class="w-full border rounded p-2"
+            rows="4"
+          ></textarea>
+          <button
+            type="submit"
+            class="bg-[#0f766e] text-white px-6 py-2 rounded hover:bg-[#0d6f63]">Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 pt-12 pb-6">
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- About Section -->
+        <div>
+          <h4 class="text-2xl font-semibold text-white mb-4">
+            MediNest<span class="text-green-400">+</span>
+          </h4>
+          <p class="text-gray-400 leading-relaxed">
+            You can consult doctors, buy medical products, and get dedicated medical education and career guidance — all in one easy-to-use platform that saves your time and effort.
+          </p>
+          <div class="flex space-x-4 mt-4">
+            <a href="#" class="hover:text-blue-400">Facebook</a>
+            <a href="#" class="hover:text-blue-400">Instagram</a>
+            <a href="#" class="hover:text-blue-400">LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="text-center md:text-left">
+          <h4 class="text-xl font-semibold text-white mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#home" class="hover:text-blue-400">Home</a></li>
+            <li><a href="#about" class="hover:text-blue-400">About Us</a></li>
+            <li>
+              <a href="#services" class="hover:text-blue-400">Our Services</a>
+            </li>
+            <li>
+              <a href="#doctors" class="hover:text-blue-400">Our Doctors</a>
+            </li>
+            <li>
+              <a href="#contact" class="hover:text-blue-400">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-xl font-semibold text-white mb-4">Contact Info</h4>
+          <ul class="space-y-3">
+            <li>
+              <span class="font-semibold text-white">📍 Address:</span> MediNest Center, New Delhi, India
+            </li>
+            <li>
+              <span class="font-semibold text-white">📞 Phone:</span> +91 98765
+              43210
+            </li>
+            <li>
+              <span class="font-semibold text-white">📧 Email:</span>
+              info@medinest.com
+            </li>
+            <li>
+              <span class="font-semibold text-white">🕒 Timings:</span> Mon–Sat:
+              9 AM – 9 PM | Emergency 24x7
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div
+        class="border-t border-gray-700 mt-10 pt-4 text-center text-gray-400 text-sm"
+      >
+        <p>© 2025 HealthCare+. All Rights Reserved.</p>
+        <p class="mt-2">
+          <a href="#" class="hover:text-blue-400">Privacy Policy</a> •
+          <a href="#" class="hover:text-blue-400">Terms & Conditions</a>
+        </p>
+      </div>
+    </footer>
+
+
+<!-- Carousel Animation (same as before) -->
+<style>
+  @keyframes slide {
+    0%, 50% {opacity: 1;}
+    25%, 75% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+  @keyframes slide2 {
+    0%, 50% {opacity: 0;}
+    25%, 75% {opacity: 1;}
+    100% {opacity: 0;}
+  }
+  .animate-slide {
+    animation: slide 10s infinite;
+  }
+  .animate-slide2 {
+    animation: slide2 10s infinite;
+  }
+</style>
+<script src="/medinest-frontend/js/healthcare/specializations.js"></script>
+
+</body>
+</html>
