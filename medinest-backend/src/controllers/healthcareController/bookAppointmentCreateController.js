@@ -1,5 +1,5 @@
 const bookAppointmentCreateModel = require("../../models/healthcareModel/bookAppointmentCreateModel");
-const bookAppointmentModel = require("../../models/healthcareModel/bookAppointmentModel"); // ✅ use this
+const bookAppointmentModel = require("../../models/healthcareModel/bookAppointmentModel");
 const cloudinary = require("../../config/cloudinary");
 const fs = require("fs");
 
@@ -32,7 +32,10 @@ const appointmentCreate = async (req, res) => {
 
 
     // ---------------- FETCH PATIENT USING EXISTING MODEL ----------------
-    const patient = await bookAppointmentModel.getPatientDetailsById(patientToken.id);
+
+    const patientId = patientToken.id;
+
+    const patient = await bookAppointmentModel.getPatientDetailsById(patientId);
 
     if (!patient) {
       return res.status(404).json({
@@ -56,10 +59,10 @@ const appointmentCreate = async (req, res) => {
     const appointmentData = {
       doctor_id: doctorId,
       specialization_id, // map to ID if needed
-      patient_id: patient.id,
+      patient_id: patientId,
 
       // snapshot fields
-      patient_id: patient.id,//------------
+      patient_id: patientId,//------------
       patient_name: patient.patient_name,
       patient_email: patient.email,
       patient_phone: patient.phone,
