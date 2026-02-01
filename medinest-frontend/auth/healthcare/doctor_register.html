@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Registration | MediNest</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-[#0f766e] via-[#5eead4] to-[#99f6e4] font-sans min-h-screen">
+
+  <!-- HEADER -->
+  <header class="w-full px-6 py-4">
+    <a href="/public/index.html">
+      <h1 class="text-white text-2xl font-bold">
+        MediNest<span class="text-green-200">+</span>
+      </h1>
+    </a>
+  </header>
+
+  <!-- CONTENT -->
+  <div class="flex items-center justify-center py-6">
+    <div class="bg-white rounded-xl shadow-2xl shadow-teal-300/50 w-11/12 sm:w-full max-w-2xl p-8">
+
+      <h2 class="text-3xl font-bold text-center text-[#0f766e] mb-6">
+        Register as a Doctor
+      </h2>
+
+      <form id="doctorForm" class="space-y-5" novalidate>
+
+        <!-- FIELD TEMPLATE -->
+        <!-- Full Name -->
+        <div class="form-field">
+          <label class="block text-gray-700 font-medium mb-1">
+            Full Name <span class="text-red-500">*</span>
+          </label>
+          <input type="text" data-required
+            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
+          <p class="text-red-500 text-sm hidden">Full name is required</p>
+        </div>
+
+        <!-- Email -->
+        <div class="form-field">
+          <label class="block text-gray-700 font-medium mb-1">
+            Email <span class="text-red-500">*</span>
+          </label>
+
+          <input type="email" data-required data-email
+            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
+
+          <p class="text-red-500 text-sm hidden" data-error="empty">
+            Email is required
+          </p>
+
+          <p class="text-red-500 text-sm hidden" data-error="invalid">
+            Please enter a valid email address
+          </p>
+        </div>
+
+
+        <!-- Password -->
+        <div class="form-field">
+          <label class="block text-gray-700 font-medium mb-1">
+            Password <span class="text-red-500">*</span>
+          </label>
+
+          <div class="relative">
+            <input id="password" type="password" data-required
+              class="w-full border rounded-lg p-2 pr-10 focus:ring-2 focus:ring-teal-400 outline-none">
+
+            <button type="button" onclick="togglePassword()"
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-teal-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5
+                     c4.478 0 8.268 2.943 9.542 7
+                     -1.274 4.057-5.064 7-9.542 7
+                     -4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+            </button>
+          </div>
+
+          <p class="text-red-500 text-sm hidden">Password is required</p>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-field">
+          <label class="block text-gray-700 font-medium mb-1">
+            Phone Number <span class="text-red-500">*</span>
+          </label>
+          <input type="tel" data-required
+            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
+          <p class="text-red-500 text-sm hidden">Phone number is required</p>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-field">
+          <label class="block text-gray-700 font-medium mb-1">
+            Gender <span class="text-red-500">*</span>
+          </label>
+          <select data-required
+            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400">
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+          <p class="text-red-500 text-sm hidden">Gender is required</p>
+        </div>
+
+        <!-- Specialization -->
+        <div class="form-field">
+          <label class="block text-gray-700 font-medium mb-1">
+            Specialization <span class="text-red-500">*</span>
+          </label>
+          <select data-required
+            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400">
+            <option value="">Select Specialization</option>
+            <option>Cardiologist</option>
+            <option>Dermatologist</option>
+            <option>Neurologist</option>
+            <option>Pediatrician</option>
+            <option>General Physician</option>
+          </select>
+          <p class="text-red-500 text-sm hidden">Specialization is required</p>
+        </div>
+
+        <!-- Qualification -->
+        <div class="form-field">
+          <label class="block text-gray-700 font-medium mb-1">
+            Qualification <span class="text-red-500">*</span>
+          </label>
+          <input type="text" data-required
+            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
+          <p class="text-red-500 text-sm hidden">Qualification is required</p>
+        </div>
+
+        <!-- Experience -->
+        <div class="form-field">
+          <label class="block text-gray-700 font-medium mb-1">
+            Experience (Years) <span class="text-red-500">*</span>
+          </label>
+          <input type="number" min="0" data-required
+            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
+          <p class="text-red-500 text-sm hidden">Experience is required</p>
+        </div>
+
+        <!-- Consultation Type -->
+        <div class="form-field">
+          <label class="block text-gray-700 font-medium mb-1">
+            Consultation Type <span class="text-red-500">*</span>
+          </label>
+          <select data-required
+            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400">
+            <option value="">Select</option>
+            <option>Online</option>
+            <option>Clinic</option>
+            <option>Both</option>
+          </select>
+          <p class="text-red-500 text-sm hidden">Consultation type is required</p>
+        </div>
+
+        <!-- Fee -->
+        <div class="form-field">
+          <label class="block text-gray-700 font-medium mb-1">
+            Consultation Fee (₹) <span class="text-red-500">*</span>
+          </label>
+          <input type="number" data-required
+            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
+          <p class="text-red-500 text-sm hidden">Fee is required</p>
+        </div>
+
+        <!-- Clinic -->
+        <div class="form-field">
+          <label class="block text-gray-700 font-medium mb-1">
+            Clinic / Hospital Name <span class="text-red-500">*</span>
+          </label>
+          <input type="text" data-required
+            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
+          <p class="text-red-500 text-sm hidden">Clinic name is required</p>
+        </div>
+
+        <!-- Location -->
+        <div class="form-field">
+          <label class="block text-gray-700 font-medium mb-1">
+            Location <span class="text-red-500">*</span>
+          </label>
+          <input type="text" data-required
+            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
+          <p class="text-red-500 text-sm hidden">Location is required</p>
+        </div>
+
+        <!-- Bio -->
+        <div class="form-field">
+          <label class="block text-gray-700 font-medium mb-1">
+            Short Bio <span class="text-red-500">*</span>
+          </label>
+          <textarea rows="3" data-required
+            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none"></textarea>
+          <p class="text-red-500 text-sm hidden">Bio is required</p>
+        </div>
+
+        <button type="submit"
+          class="w-full bg-[#0f766e] hover:bg-[#115e59]
+                 text-white py-2 rounded-lg transition font-semibold">
+          Register as Doctor
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    function togglePassword() {
+      const pwd = document.getElementById("password");
+      pwd.type = pwd.type === "password" ? "text" : "password";
+    }
+
+    document.getElementById("doctorForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      let valid = true;
+
+      this.querySelectorAll("[data-required]").forEach(field => {
+  const wrapper = field.closest(".form-field");
+
+  // generic error (used by all fields)
+  const genericError = wrapper.querySelector("p:not([data-error])");
+
+  // email-specific errors
+  const emptyError = wrapper.querySelector('[data-error="empty"]');
+  const invalidError = wrapper.querySelector('[data-error="invalid"]');
+
+  // reset all errors
+  [genericError, emptyError, invalidError].forEach(err => {
+    if (err) err.classList.add("hidden");
+  });
+  field.classList.remove("border-red-500");
+
+  // EMPTY check (for ALL fields)
+  if (!field.value || !field.value.trim()) {
+    if (emptyError) {
+      emptyError.classList.remove("hidden");   // email empty
+    } else if (genericError) {
+      genericError.classList.remove("hidden"); // other fields empty
+    }
+    field.classList.add("border-red-500");
+    valid = false;
+    return;
+  }
+
+  // EMAIL format check (only email field)
+  if (field.hasAttribute("data-email")) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(field.value.trim())) {
+      if (invalidError) invalidError.classList.remove("hidden");
+      field.classList.add("border-red-500");
+      valid = false;
+    }
+  }
+});
+
+
+      if (valid) {
+        alert("Registered successfully ✅");
+      }
+    });
+  </script>
+
+</body>
+</html>

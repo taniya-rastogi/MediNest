@@ -12,7 +12,7 @@ router.use("/specializations", require("./specializationsRoutes"));
 // Doctor public routes
 router.use("/doctor/specialization", require("./doctorPublicRoutes"));
 
-// Doctor auth
+// Doctor auth Register/login
 router.use("/doctor/auth", require("./doctorAuthRoutes"));
 
 // Doctor protected routes (doctor dashboard)
