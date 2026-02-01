@@ -24,7 +24,7 @@ router.use("/book-appointment", require("./bookAppointmentRoutes"));
 // get appointments
 router.use("/appointment", require("./appointmentsRoutes"));
 
-// Patient auth
+// Patient auth/login
 router.use("/patient/auth", require("./patientAuthRoutes"));
 
 

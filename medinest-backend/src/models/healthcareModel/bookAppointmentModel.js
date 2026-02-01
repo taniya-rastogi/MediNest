@@ -32,8 +32,18 @@ const getConsultationTypesByDoctorId = async (doctorId) => {
   return rows[0]; // Online | Clinic | Both
 };
 
+const getSpecializationIdByDoctorId = async (doctorId) => {
+  const [rows] = await pool.query(
+    `SELECT specialization_id FROM doctors WHERE id = ? LIMIT 1`,
+    [doctorId]
+  );
+
+  return rows[0]; // { specialization_id: 3 }
+};
+
 
 module.exports = {
   getPatientDetailsById,
+  getSpecializationIdByDoctorId,
   getConsultationTypesByDoctorId
 };

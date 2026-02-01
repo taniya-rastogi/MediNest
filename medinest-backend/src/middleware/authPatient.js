@@ -1,3 +1,6 @@
+//src/middleware/authPatient.js
+//will be used for patient dashboard or somthing which need patient login
+
 const jwt = require("jsonwebtoken");
 
 const authPatient = (req, res, next) => {

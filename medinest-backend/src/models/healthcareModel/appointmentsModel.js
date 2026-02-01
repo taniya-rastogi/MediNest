@@ -51,7 +51,7 @@ const getAvailableSlots = async (doctorId, date) => {
   return { available: true, slots: availableSlots, dayOfWeek };
 };
 
-// 🔹 Book an appointment (with patient handling and slot check)
+// Book an appointment (with patient handling and slot check)
 const bookAppointment = async (doctorId, data) => {
   const { patient_name, email, phone, gender, age, description, slot_id, date } = data;
 
@@ -102,7 +102,7 @@ const bookAppointment = async (doctorId, data) => {
   return { message: "Appointment booked successfully", patient_id: patientId };
 };
 
-// 🔹 Fetch all appointments for a doctor with advanced filtering
+// Fetch all appointments for a doctor with advanced filtering
 const getDoctorAppointments = async (doctorId, filter = {}) => {
   const { date, status, patient_name, sort } = filter;
 
