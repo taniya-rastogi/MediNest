@@ -96,7 +96,7 @@ const appointmentCreate = async (req, res) => {
     // Unknown server error
     return res.status(500).json({
       success: false,
-      message: "Internal server error. Please try again later."
+      message: "Internal server error"
     });
   }
 };
