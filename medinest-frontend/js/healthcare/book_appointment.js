@@ -110,6 +110,7 @@ appointmentDate.addEventListener("change", async () => {
 
       btn.classList.add("active");
       selectedSlotId = slot.slot_id;
+      clearError("errorSlot");
     };
 
     slotsGrid.appendChild(btn);
@@ -134,6 +135,27 @@ function isValidEmail(email) {
   return regex.test(email);
 }
 
+function attachClearOnInput(inputEl, errorId) {
+  inputEl.addEventListener("input", () => {
+    if (inputEl.value.trim()) {
+      clearError(errorId);
+    }
+  });
+}
+
+appointmentDate.addEventListener("change", () => {
+  if (appointmentDate.value) {
+    clearError("errorAppointmentDate");
+  }
+});
+
+consultationType.addEventListener("change", () => {
+  if (consultationType.value) {
+    clearError("errorConsultationType");
+  }
+});
+
+
 bookBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -154,69 +176,78 @@ bookBtn.addEventListener("click", (e) => {
 
   // Name
   if (!patientName.value.trim()) {
-    showError("errorPatientName", "Patient name is required");
+    showError("errorPatientName", "*Patient name is required");
     isValid = false;
   }
 
   // Phone
   if (!patientPhone.value.trim()) {
-    showError("errorPatientPhone", "Mobile number is required");
+    showError("errorPatientPhone", "*Mobile number is required");
     isValid = false;
   }
 
   // Age
   if (!patientAge.value.trim()) {
-    showError("errorPatientAge", "Age is required");
+    showError("errorPatientAge", "*Age is required");
     isValid = false;
   }
 
   // Gender
   if (!patientGender.value.trim()) {
-    showError("errorPatientGender", "Gender is required");
+    showError("errorPatientGender", "*Gender is required");
     isValid = false;
   }
 
   // Email
   if (!patientEmail.value.trim()) {
-    showError("errorPatientEmail", "Email is required");
+    showError("errorPatientEmail", "*Email is required");
     isValid = false;
   } else if (!isValidEmail(patientEmail.value.trim())) {
-    showError("errorPatientEmail", "Enter valid email");
+    showError("errorPatientEmail", "*Enter valid email");
     isValid = false;
   }
 
   // Date
   if (!appointmentDate.value) {
-    showError("errorAppointmentDate", "Appointment date is required");
+    showError("errorAppointmentDate", "*Appointment date is required");
     isValid = false;
   }
 
   // Slot
   if (!selectedSlotId) {
-    showError("errorSlot", "Please select a slot");
+    showError("errorSlot", "*Please select a slot");
     isValid = false;
   }
 
   // Consultation Type
   if (!consultationType.value) {
-    showError("errorConsultationType", "Consultation type is required");
+    showError("errorConsultationType", "*Consultation type is required");
     isValid = false;
   }
 
   // Problem
   if (!problem.value.trim()) {
-    showError("errorProblem", "Please describe your problem");
+    showError("errorProblem", "*Please describe your problem");
     isValid = false;
   }
 
   if (!isValid) return;
 
   // If everything is valid
-  alert("All validations passed. Proceed to payment 🚀");
+  alert("All validations passed. Proceed to payment");
 });
 
 
+
 /* ===================== INIT ===================== */
+
+attachClearOnInput(patientName, "errorPatientName");
+attachClearOnInput(patientPhone, "errorPatientPhone");
+attachClearOnInput(patientAge, "errorPatientAge");
+attachClearOnInput(patientGender, "errorPatientGender");
+attachClearOnInput(patientEmail, "errorPatientEmail");
+attachClearOnInput(problem, "errorProblem");
+
 loadDoctorProfile();
 loadFormContext();
 
