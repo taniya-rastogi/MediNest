@@ -26,12 +26,13 @@
         Login to MediNest
       </h2>
 
-      <form class="space-y-5">
+      <form id="loginForm" class="space-y-5">
 
         <!-- Email -->
         <div>
           <label class="block text-gray-600 mb-1">Email</label>
           <input
+          id="email"
             type="email"
             required
             class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none"
@@ -123,12 +124,13 @@
   </div>
 
   <!-- Script -->
-  <script>
+  <!-- <script>
     function togglePassword() {
       const password = document.getElementById("password");
       password.type = password.type === "password" ? "text" : "password";
     }
-  </script>
+  </script> -->
+  <script src="../../../medinest-frontend/js/healthcare/login.js"></script>
 
 </body>
 </html>

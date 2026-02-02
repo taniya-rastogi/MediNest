@@ -22,7 +22,7 @@ const doctorLogin = async (req, res) => {
     const token = jwt.sign(
       { 
         doctorId: doctor.id, 
-        userType: "doctor"   // 🔥 match middleware
+        userType: "doctor"   // match middleware
       },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }

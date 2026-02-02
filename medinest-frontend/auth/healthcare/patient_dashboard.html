@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Patient Dashboard | MediNest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-[#0f766e] to-[#2dd4bf] min-h-screen p-6">
+
+ 
+
+
+<!-- TOP LEFT BRANDING (HOME + LOGO) -->
+<div class=" top-6 left-6 flex items-center gap-3 z-50">
+  
+  <!-- HOME ICON -->
+  <a href="/medinest-frontend/public/healthcare/healthcare.html"
+     class="text-white hover:text-gray-200 transition">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         class="h-8 w-8"
+         fill="currentColor"
+         viewBox="0 0 24 24">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    </svg>
+  </a>
+
+  <!-- MEDINEST LOGO -->
+  <h4 class="text-2xl font-semibold text-white tracking-wide">
+    MediNest<span class="text-green-400">+</span>
+  </h4>
+
+</div>
+
+ <!-- HEADER -->
+  <div class="max-w-7xl mx-auto text-white mb-8 mt-10">
+    <h1 class="text-3xl font-bold">Welcome back</h1>
+    <p class="text-sm opacity-90">Rahul Mehta</p>
+  </div>
+
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-6">
+
+    <!-- LEFT PROFILE PANEL -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
+      <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d"
+           class="w-32 h-32 mx-auto rounded-full border-4 border-[#0f766e] object-cover" />
+
+      <h2 class="text-xl font-semibold mt-4">Rahul Mehta</h2>
+      <p class="text-[#0f766e] font-medium">Patient ID: MN-10234</p>
+
+      <p class="text-sm text-gray-600 mt-2">Age: 28 Years</p>
+      <p class="text-sm text-gray-600">Blood Group: O+</p>
+      <p class="text-sm text-gray-600">Phone: +91 9XXXXXXXXX</p>
+
+      <button class="mt-5 w-full bg-gradient-to-r from-[#0f766e] to-[#2dd4bf]
+                     text-white py-2 rounded-lg font-semibold">
+        Edit Profile
+      </button>
+
+      <!-- LOGOUT BUTTON BELOW EDIT PROFILE -->
+<a href="/medinest-frontend/public/login.html" 
+   class="mt-3 block w-full text-[#0f766e] font-semibold py-2 rounded-lg border border-[#0f766e] text-center hover:bg-[#0f766e] hover:text-white transition-colors">
+  Logout
+</a>
+    </div>
+
+
+
+    <!-- RIGHT CONTENT -->
+    <div class="lg:col-span-3 space-y-6">
+
+      <!-- STATS -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl p-5 shadow">
+          <h3 class="text-sm text-gray-500">Upcoming Appointments</h3>
+          <p class="text-2xl font-bold text-[#0f766e]">2</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-5 shadow">
+          <h3 class="text-sm text-gray-500">Medical Reports</h3>
+          <p class="text-2xl font-bold text-[#0f766e]">7</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-5 shadow">
+          <h3 class="text-sm text-gray-500">Health Status</h3>
+          <p class="text-2xl font-bold text-green-600">Good</p>
+        </div>
+      </div>
+
+      <!-- APPOINTMENTS TABLE -->
+      <div class="bg-white rounded-2xl shadow p-6">
+        <h3 class="text-lg font-semibold mb-4">My Appointments</h3>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-[#0f766e] text-white">
+              <tr>
+                <th class="py-3 px-4 text-left">Doctor</th>
+                <th class="py-3 px-4 text-left">Specialization</th>
+                <th class="py-3 px-4 text-left">Date & Time</th>
+                <th class="py-3 px-4 text-left">Status</th>
+                <th class="py-3 px-4 text-left">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr class="border-b">
+                <td class="py-3 px-4">Dr. Anjali Sharma</td>
+                <td class="py-3 px-4">Cardiologist</td>
+                <td class="py-3 px-4">12 Feb · 10:30 AM</td>
+                <td class="py-3 px-4 text-green-600 font-medium">Confirmed</td>
+                <td class="py-3 px-4">
+                  <button class="text-sm text-white px-3 py-1 rounded
+                                 bg-gradient-to-r from-[#0f766e] to-[#2dd4bf]">
+                    View
+                  </button>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="py-3 px-4">Dr. Rahul Verma</td>
+                <td class="py-3 px-4">General Physician</td>
+                <td class="py-3 px-4">18 Feb · 06:00 PM</td>
+                <td class="py-3 px-4 text-yellow-600 font-medium">Pending</td>
+                <td class="py-3 px-4">
+                  <button class="text-sm text-white px-3 py-1 rounded
+                                 bg-gradient-to-r from-[#0f766e] to-[#2dd4bf]">
+                    View
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+      <!-- MEDICAL RECORDS -->
+      <div class="bg-white rounded-2xl shadow p-6">
+        <h3 class="text-lg font-semibold mb-4">Medical Records</h3>
+
+        <div class="flex justify-between items-center border rounded-xl p-4">
+          <div>
+            <p class="font-medium">Blood Test Report</p>
+            <p class="text-sm text-gray-500">Uploaded on 05 Feb 2026</p>
+          </div>
+          <button class="text-sm text-white px-3 py-1 rounded
+                         bg-gradient-to-r from-[#0f766e] to-[#2dd4bf]">
+            View
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
