@@ -72,11 +72,17 @@ async function loadFormContext() {
 }
 
 /* ===================== SLOTS ===================== */
+let isSlotAvailableForDate = false;
+
 appointmentDate.addEventListener("change", async () => {
   const date = appointmentDate.value;
 
   slotsGrid.innerHTML = "";
   slotsContainer.classList.remove("hidden");
+  selectedSlotId = null;
+  isSlotAvailableForDate = false;
+
+  clearError("errorSlot"); // important
 
   const res = await fetch(
     `${API_BASE}/appointment/doctor/${doctorId}/availability?date=${date}`
@@ -84,18 +90,20 @@ appointmentDate.addEventListener("change", async () => {
 
   const data = await res.json();
 
-  // No slots available
+  // ❌ No slots at all
   if (!data.available || !data.slots || data.slots.length === 0) {
     slotsGrid.innerHTML = `
       <div class="col-span-3 text-red-600 text-sm font-semibold">
         Slot is not available on this date
       </div>
     `;
-    selectedSlotId = null;
+    isSlotAvailableForDate = false;
     return;
   }
 
-  // Render slots
+  // ✅ Slots exist
+  isSlotAvailableForDate = true;
+
   data.slots.forEach(slot => {
     const btn = document.createElement("button");
     btn.type = "button";
@@ -214,10 +222,11 @@ bookBtn.addEventListener("click", (e) => {
   }
 
   // Slot
-  if (!selectedSlotId) {
-    showError("errorSlot", "*Please select a slot");
-    isValid = false;
-  }
+ if (isSlotAvailableForDate && !selectedSlotId) {
+  showError("errorSlot", "*Please select a slot");
+  isValid = false;
+}
+
 
   // Consultation Type
   if (!consultationType.value) {
