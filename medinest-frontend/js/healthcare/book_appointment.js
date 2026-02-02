@@ -3,6 +3,11 @@ const API_BASE = "http://localhost:3000/api/healthcare";
 const params = new URLSearchParams(window.location.search);
 const doctorId = params.get("doctorId");
 const specialization = params.get("specialization");
+const fileInput = document.getElementById("medicalReport");
+const chooseFileBtn = document.getElementById("chooseFileBtn");
+const selectedFileBox = document.getElementById("selectedFileBox");
+const selectedFileName = document.getElementById("selectedFileName");
+const removeFileBtn = document.getElementById("removeFileBtn");
 
 let selectedSlotId = null;
 const API_URL = `http://localhost:3000/api/healthcare/doctor/specialization/${encodeURIComponent(specialization)}/${encodeURIComponent(doctorId)}`;
@@ -90,7 +95,7 @@ appointmentDate.addEventListener("change", async () => {
 
   const data = await res.json();
 
-  // ❌ No slots at all
+  // No slots at all
   if (!data.available || !data.slots || data.slots.length === 0) {
     slotsGrid.innerHTML = `
       <div class="col-span-3 text-red-600 text-sm font-semibold">
@@ -101,7 +106,7 @@ appointmentDate.addEventListener("change", async () => {
     return;
   }
 
-  // ✅ Slots exist
+  // Slots exist
   isSlotAvailableForDate = true;
 
   data.slots.forEach(slot => {
@@ -164,7 +169,35 @@ consultationType.addEventListener("change", () => {
 });
 
 
-bookBtn.addEventListener("click", (e) => {
+
+fileInput.addEventListener("change", () => {
+  if (fileInput.files.length > 0) {
+    console.log("Selected file:", fileInput.files[0].name);
+  }
+});
+
+// Open file picker
+chooseFileBtn.addEventListener("click", () => {
+  fileInput.click();
+});
+
+// After file selection
+fileInput.addEventListener("change", () => {
+  if (fileInput.files.length > 0) {
+    selectedFileName.textContent = fileInput.files[0].name;
+    chooseFileBtn.classList.add("hidden");
+    selectedFileBox.classList.remove("hidden");
+  }
+});
+
+// Remove selected file
+removeFileBtn.addEventListener("click", () => {
+  fileInput.value = ""; // IMPORTANT: clears file
+  selectedFileBox.classList.add("hidden");
+  chooseFileBtn.classList.remove("hidden");
+});
+
+bookBtn.addEventListener("click", async (e) => {
   e.preventDefault();
 
   let isValid = true;
@@ -221,12 +254,11 @@ bookBtn.addEventListener("click", (e) => {
     isValid = false;
   }
 
-  // Slot
- if (isSlotAvailableForDate && !selectedSlotId) {
-  showError("errorSlot", "*Please select a slot");
-  isValid = false;
-}
-
+  // Slot (only if slots exist for that date)
+  if (isSlotAvailableForDate && !selectedSlotId) {
+    showError("errorSlot", "*Please select a slot");
+    isValid = false;
+  }
 
   // Consultation Type
   if (!consultationType.value) {
@@ -240,10 +272,29 @@ bookBtn.addEventListener("click", (e) => {
     isValid = false;
   }
 
+  // STOP if validation fails
   if (!isValid) return;
 
-  // If everything is valid
-  alert("All validations passed. Proceed to payment");
+  /* ===================== FORM DATA ===================== */
+
+  const formData = new FormData();
+
+  formData.append("doctor_id", doctorId);
+  formData.append("specialization", specialization);
+  formData.append("patient_name", patientName.value.trim());
+  formData.append("phone", patientPhone.value.trim());
+  formData.append("age", patientAge.value.trim());
+  formData.append("gender", patientGender.value);
+  formData.append("email", patientEmail.value.trim());
+  formData.append("appointment_date", appointmentDate.value);
+  formData.append("slot_id", selectedSlotId);
+  formData.append("consultation_type", consultationType.value);
+  formData.append("problem", problem.value.trim());
+
+
+  // TEMP success check
+  alert("All validations passed. Ready to submit with optional file 🚀");
+
 });
 
 

@@ -143,6 +143,40 @@
         <p id="errorProblem" class="text-red-500 text-xs mt-1 hidden"></p>
       </div>
 
+      <!-- Upload Reports / Images (Optional) -->
+      <div class="mb-4">
+
+        <div class="mb-4">
+          <label class="block text-sm font-semibold mb-1">
+            Upload Reports / Images (Optional)
+          </label>
+
+          <!-- hidden real input -->
+          <input type="file" id="medicalReport" accept="image/*" hidden />
+
+          <!-- custom button -->
+          <button type="button" id="chooseFileBtn" class="choose-file-btn">
+            Add image
+          </button>
+
+          <!-- selected file UI -->
+          <div id="selectedFileBox" class="selected-file hidden">
+            <span id="selectedFileName"></span>
+            <button type="button" id="removeFileBtn" aria-label="Remove file"
+              class="ml-2 text-red-500 hover:text-red-700">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <p class="text-xs text-gray-500 mt-1">
+            You can upload prescriptions, reports, or images (JPG, PNG).
+          </p>
+        </div>
+      </div>
 
       <button id="bookBtn" class="w-full bg-[#0f766e] text-white py-2 rounded-lg">
         Pay & Book Appointment
@@ -165,6 +199,53 @@
     .slot-btn.active {
       background: #065f52;
       border: 2px solid black;
+    }
+
+    /* .choose-file-btn {
+  padding: 10px 14px;
+  border: 1px dashed #4f46e5;
+  background: #eef2ff;
+  color: #3730a3;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 14px;
+} */
+
+    .choose-file-btn {
+      padding: 4px 18px;
+      border: 1px dashed black;
+      background: #eef2ff;
+      color: black;
+      cursor: pointer;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .selected-file {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .selected-file span:first-child {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    #removeFileBtn {
+      cursor: pointer;
+      color: #ef4444;
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none;
     }
   </style>
 </body>
