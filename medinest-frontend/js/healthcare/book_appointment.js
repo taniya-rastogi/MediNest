@@ -9,6 +9,19 @@ const selectedFileBox = document.getElementById("selectedFileBox");
 const selectedFileName = document.getElementById("selectedFileName");
 const removeFileBtn = document.getElementById("removeFileBtn");
 
+// Form elements
+const patientName = document.getElementById("patientName");
+const patientPhone = document.getElementById("patientPhone");
+const patientAge = document.getElementById("patientAge");
+const patientGender = document.getElementById("patientGender");
+const patientEmail = document.getElementById("patientEmail");
+const appointmentDate = document.getElementById("appointmentDate");
+const slotsGrid = document.getElementById("slotsGrid");
+const slotsContainer = document.getElementById("slotsContainer");
+const consultationType = document.getElementById("consultationType");
+const problem = document.getElementById("problem");
+const bookBtn = document.getElementById("bookBtn");
+
 let selectedSlotId = null;
 const API_URL = `http://localhost:3000/api/healthcare/doctor/specialization/${encodeURIComponent(specialization)}/${encodeURIComponent(doctorId)}`;
 
@@ -57,19 +70,28 @@ document.getElementById("doctorConsultationType").innerText =
 
 /* ===================== FORM CONTEXT ===================== */
 async function loadFormContext() {
+  const token = localStorage.getItem("token");
+  const userType = localStorage.getItem("userType");
+  const headers = {};
+  if (token && userType === "patient") {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
   const res = await fetch(
     `${API_BASE}/book-appointment/form/${specialization}/${doctorId}`,
-    { credentials: "include" }
+    {
+      credentials: "include",
+      headers
+    }
   );
   const { data } = await res.json();
 
-  if (data.isAuthenticated) {
+  if (data.isAuthenticated && data.patient_details) {
     const p = data.patient_details;
-    patientName.value = p.patient_name;
-    patientPhone.value = p.phone;
-    patientAge.value = p.age;
-    patientGender.value = p.gender;
-    patientEmail.value = p.email;
+    patientName.value = p.patient_name || "";
+    patientPhone.value = p.phone || "";
+    patientAge.value = p.age || "";
+    patientGender.value = p.gender || "";
+    patientEmail.value = p.email || "";
   }
 
   consultationType.innerHTML =
@@ -277,24 +299,66 @@ bookBtn.addEventListener("click", async (e) => {
 
   /* ===================== FORM DATA ===================== */
 
-  const formData = new FormData();
+  const token = localStorage.getItem("token");
+  const userType = localStorage.getItem("userType");
+  if (!token || userType !== "patient") {
+    alert("Please login as a patient to book an appointment.");
+    window.location.href = "/medinest-frontend/auth/healthcare/login.html?redirect=" + encodeURIComponent(window.location.href);
+    return;
+  }
 
-  formData.append("doctor_id", doctorId);
-  formData.append("specialization", specialization);
-  formData.append("patient_name", patientName.value.trim());
-  formData.append("phone", patientPhone.value.trim());
-  formData.append("age", patientAge.value.trim());
-  formData.append("gender", patientGender.value);
-  formData.append("email", patientEmail.value.trim());
+  const formData = new FormData();
+  formData.append("description", problem.value.trim());
   formData.append("appointment_date", appointmentDate.value);
   formData.append("slot_id", selectedSlotId);
-  formData.append("consultation_type", consultationType.value);
-  formData.append("problem", problem.value.trim());
+  if (fileInput.files.length > 0) {
+    formData.append("image_url", fileInput.files[0]);
+  }
 
+  bookBtn.disabled = true;
+  bookBtn.textContent = "Booking...";
 
-  // TEMP success check
-  alert("All validations passed. Ready to submit with optional file 🚀");
+  try {
+    const url = `${API_BASE}/book-appointment/create/${specialization}/${doctorId}`;
+    console.log("[Book Appointment] POST", url);
 
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      body: formData
+    });
+
+    const text = await res.text();
+    let data;
+    try {
+      data = text ? JSON.parse(text) : {};
+    } catch (e) {
+      console.error("[Book Appointment] Invalid JSON response:", text);
+      alert("Server returned invalid response. Check console for details.");
+      bookBtn.disabled = false;
+      bookBtn.textContent = "Pay & Book Appointment";
+      return;
+    }
+
+    console.log("[Book Appointment] Response", res.status, data);
+
+    if (!res.ok) {
+      alert(data.message || "Failed to book appointment");
+      bookBtn.disabled = false;
+      bookBtn.textContent = "Pay & Book Appointment";
+      return;
+    }
+
+    alert(data.message || "Appointment booked successfully!");
+    window.location.href = "/medinest-frontend/auth/healthcare/patient_dashboard.html";
+  } catch (err) {
+    console.error("[Book Appointment] Error:", err);
+    alert("Something went wrong. Please try again. Check console for details.");
+    bookBtn.disabled = false;
+    bookBtn.textContent = "Pay & Book Appointment";
+  }
 });
 
 

@@ -11,7 +11,7 @@
 
   <!-- HEADER -->
   <header class="w-full px-6 py-4">
-    <a href="/public/index.html">
+    <a href="/medinest-frontend/public/index.html">
       <h1 class="text-white text-2xl font-bold">
         MediNest<span class="text-green-200">+</span>
       </h1>
@@ -34,7 +34,7 @@
           <label class="block text-gray-700 font-medium mb-1">
             Full Name <span class="text-red-500">*</span>
           </label>
-          <input type="text" data-required
+          <input type="text" id="fullName" data-required
             class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
           <p class="text-red-500 text-sm hidden">Full name is required</p>
         </div>
@@ -45,7 +45,7 @@
             Email <span class="text-red-500">*</span>
           </label>
 
-          <input type="email" data-required data-email
+          <input type="email" id="email" data-required data-email
             class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
 
           <p class="text-red-500 text-sm hidden" data-error="empty">
@@ -91,7 +91,7 @@
           <label class="block text-gray-700 font-medium mb-1">
             Phone Number <span class="text-red-500">*</span>
           </label>
-          <input type="tel" data-required
+          <input type="tel" id="phone" data-required
             class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
           <p class="text-red-500 text-sm hidden">Phone number is required</p>
         </div>
@@ -101,12 +101,12 @@
           <label class="block text-gray-700 font-medium mb-1">
             Gender <span class="text-red-500">*</span>
           </label>
-          <select data-required
+          <select id="gender" data-required
             class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400">
             <option value="">Select</option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Other</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
           </select>
           <p class="text-red-500 text-sm hidden">Gender is required</p>
         </div>
@@ -116,14 +116,9 @@
           <label class="block text-gray-700 font-medium mb-1">
             Specialization <span class="text-red-500">*</span>
           </label>
-          <select data-required
+          <select id="specialization" data-required
             class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400">
             <option value="">Select Specialization</option>
-            <option>Cardiologist</option>
-            <option>Dermatologist</option>
-            <option>Neurologist</option>
-            <option>Pediatrician</option>
-            <option>General Physician</option>
           </select>
           <p class="text-red-500 text-sm hidden">Specialization is required</p>
         </div>
@@ -133,7 +128,7 @@
           <label class="block text-gray-700 font-medium mb-1">
             Qualification <span class="text-red-500">*</span>
           </label>
-          <input type="text" data-required
+          <input type="text" id="qualification" data-required
             class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
           <p class="text-red-500 text-sm hidden">Qualification is required</p>
         </div>
@@ -143,7 +138,7 @@
           <label class="block text-gray-700 font-medium mb-1">
             Experience (Years) <span class="text-red-500">*</span>
           </label>
-          <input type="number" min="0" data-required
+          <input type="number" id="experience" min="0" data-required
             class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
           <p class="text-red-500 text-sm hidden">Experience is required</p>
         </div>
@@ -153,12 +148,12 @@
           <label class="block text-gray-700 font-medium mb-1">
             Consultation Type <span class="text-red-500">*</span>
           </label>
-          <select data-required
+          <select id="consultationType" data-required
             class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400">
             <option value="">Select</option>
-            <option>Online</option>
-            <option>Clinic</option>
-            <option>Both</option>
+            <option value="Online">Online</option>
+            <option value="Clinic">Clinic</option>
+            <option value="Both">Both</option>
           </select>
           <p class="text-red-500 text-sm hidden">Consultation type is required</p>
         </div>
@@ -168,7 +163,7 @@
           <label class="block text-gray-700 font-medium mb-1">
             Consultation Fee (₹) <span class="text-red-500">*</span>
           </label>
-          <input type="number" data-required
+          <input type="number" id="consultationFee" data-required
             class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
           <p class="text-red-500 text-sm hidden">Fee is required</p>
         </div>
@@ -178,7 +173,7 @@
           <label class="block text-gray-700 font-medium mb-1">
             Clinic / Hospital Name <span class="text-red-500">*</span>
           </label>
-          <input type="text" data-required
+          <input type="text" id="clinicName" data-required
             class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
           <p class="text-red-500 text-sm hidden">Clinic name is required</p>
         </div>
@@ -188,9 +183,19 @@
           <label class="block text-gray-700 font-medium mb-1">
             Location <span class="text-red-500">*</span>
           </label>
-          <input type="text" data-required
+          <input type="text" id="location" data-required
             class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
           <p class="text-red-500 text-sm hidden">Location is required</p>
+        </div>
+
+        <!-- Profile Image (Optional) -->
+        <div class="form-field">
+          <label class="block text-gray-700 font-medium mb-1">
+            Profile Photo <span class="text-gray-400 text-sm">(Optional)</span>
+          </label>
+          <input type="file" id="profileImg" accept="image/jpeg,image/jpg,image/png"
+            class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none">
+          <p class="text-gray-500 text-xs mt-1">JPEG or PNG only</p>
         </div>
 
         <!-- Bio -->
@@ -198,7 +203,7 @@
           <label class="block text-gray-700 font-medium mb-1">
             Short Bio <span class="text-red-500">*</span>
           </label>
-          <textarea rows="3" data-required
+          <textarea id="bio" rows="3" data-required
             class="w-full border rounded-lg p-2 focus:ring-2 focus:ring-teal-400 outline-none"></textarea>
           <p class="text-red-500 text-sm hidden">Bio is required</p>
         </div>
@@ -214,61 +219,7 @@
   </div>
 
   <!-- SCRIPT -->
-  <script>
-    function togglePassword() {
-      const pwd = document.getElementById("password");
-      pwd.type = pwd.type === "password" ? "text" : "password";
-    }
-
-    document.getElementById("doctorForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      let valid = true;
-
-      this.querySelectorAll("[data-required]").forEach(field => {
-  const wrapper = field.closest(".form-field");
-
-  // generic error (used by all fields)
-  const genericError = wrapper.querySelector("p:not([data-error])");
-
-  // email-specific errors
-  const emptyError = wrapper.querySelector('[data-error="empty"]');
-  const invalidError = wrapper.querySelector('[data-error="invalid"]');
-
-  // reset all errors
-  [genericError, emptyError, invalidError].forEach(err => {
-    if (err) err.classList.add("hidden");
-  });
-  field.classList.remove("border-red-500");
-
-  // EMPTY check (for ALL fields)
-  if (!field.value || !field.value.trim()) {
-    if (emptyError) {
-      emptyError.classList.remove("hidden");   // email empty
-    } else if (genericError) {
-      genericError.classList.remove("hidden"); // other fields empty
-    }
-    field.classList.add("border-red-500");
-    valid = false;
-    return;
-  }
-
-  // EMAIL format check (only email field)
-  if (field.hasAttribute("data-email")) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(field.value.trim())) {
-      if (invalidError) invalidError.classList.remove("hidden");
-      field.classList.add("border-red-500");
-      valid = false;
-    }
-  }
-});
-
-
-      if (valid) {
-        alert("Registered successfully ✅");
-      }
-    });
-  </script>
+  <script src="/medinest-frontend/js/healthcare/doctor_register.js"></script>
 
 </body>
 </html>
