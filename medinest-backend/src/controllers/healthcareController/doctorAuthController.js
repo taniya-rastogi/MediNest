@@ -1,4 +1,5 @@
 // src/controller/healthcareController/doctorAuthController.js
+// cookie correction pendding
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -16,7 +17,7 @@ const doctorLogin = async (req, res) => {
 
     const isMatch = await bcrypt.compare(password, doctor.password);
     if (!isMatch) {
-      return res.status(400).json({ message: "Invalid email or password" });
+      return res.status(401).json({ message: "Invalid email or password" });
     }
 
     const token = jwt.sign(
@@ -25,12 +26,21 @@ const doctorLogin = async (req, res) => {
         userType: "doctor"   // match middleware
       },
       process.env.JWT_SECRET,
-      { expiresIn: "7d" }
+      { expiresIn: "1d" }
     );
 
+    const maxAge = 1 * 24 * 60 * 60 * 1000;
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: false,
+      sameSite: "lax",
+      maxAge,
+      path: "/"
+    });
+
     res.json({
-      message: "Login successful",
-      token,
+      success: true,
+      message: "Doctor Login successful",
       doctor: {
         id: doctor.id,
         name: doctor.name,
@@ -39,7 +49,7 @@ const doctorLogin = async (req, res) => {
     });
 
   } catch (error) {
-    console.error(error);
+    console.error("doctor Login error:", error);
     res.status(500).json({ message: "Server error doctorAuthController" });
   }
 };

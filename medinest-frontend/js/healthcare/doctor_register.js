@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:3000/api/healthcare";
+const API_BASE = "http://127.0.0.1:3000/api/healthcare";
 const REGISTER_URL = `${API_BASE}/doctor/auth/register`;
 const SPECIALIZATIONS_URL = `${API_BASE}/specializations`;
 
@@ -12,7 +12,7 @@ const submitBtn = form?.querySelector('button[type="submit"]');
 async function loadSpecializations() {
   if (!specializationSelect) return;
   try {
-    const res = await fetch(SPECIALIZATIONS_URL);
+    const res = await fetch(SPECIALIZATIONS_URL, { credentials: "include" });
     const result = await res.json();
     if (!result.success || !result.data) {
       console.error("Failed to load specializations:", result.message);
@@ -111,6 +111,7 @@ form?.addEventListener("submit", async (e) => {
   try {
     const res = await fetch(REGISTER_URL, {
       method: "POST",
+      credentials: "include",
       body: formData
     });
 

@@ -15,9 +15,9 @@ loginForm.addEventListener("submit", async (e) => {
   let url = "";
   let bodyData = {};
 
-  // 🔁 Decide API based on role
+  // Decide API based on role
   if (role === "patient") {
-    url = "http://localhost:3000/api/healthcare/patient/auth/login";
+    url = "http://127.0.0.1:3000/api/healthcare/patient/auth/login";
 
     bodyData = {
       identifier: email,   // backend expects identifier
@@ -26,7 +26,7 @@ loginForm.addEventListener("submit", async (e) => {
   }
 
   if (role === "doctor") {
-    url = "http://localhost:3000/api/healthcare/doctor/auth/login";
+    url = "http://127.0.0.1:3000/api/healthcare/doctor/auth/login";
 
     bodyData = {
       email,
@@ -40,6 +40,7 @@ loginForm.addEventListener("submit", async (e) => {
       headers: {
         "Content-Type": "application/json"
       },
+      credentials: "include",
       body: JSON.stringify(bodyData)
     });
 
@@ -50,16 +51,9 @@ loginForm.addEventListener("submit", async (e) => {
       return;
     }
 
-    // ✅ Save token
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("userType", role);
-
-    // Optional user info
     if (role === "patient") {
-      localStorage.setItem("patient", JSON.stringify(data.patient));
       window.location.href = "/medinest-frontend/auth/healthcare/patient_dashboard.html";
     } else {
-      localStorage.setItem("doctor", JSON.stringify(data.doctor));
       window.location.href = "/medinest-frontend/auth/healthcare/doctor_dashboard.html";
     }
 

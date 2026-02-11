@@ -1,18 +1,16 @@
 // authDoctor.js (Token verification middleware)
 // src/middleware/authDoctor.js
 
-
 const jwt = require("jsonwebtoken");
 
 const authDoctor = (req, res, next) => {
-  const authHeader = req.headers.authorization;
+  const token = req.cookies.token;
 
-  if (!authHeader?.startsWith("Bearer ")) {
-    return res.status(401).json({ message: "No token" });
+  if (!token) {
+    return res.status(401).json({ message: "Not authenticated" });
   }
 
   try {
-    const token = authHeader.split(" ")[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     if (decoded.userType !== "doctor") {
@@ -20,12 +18,16 @@ const authDoctor = (req, res, next) => {
     }
 
     req.doctor = {
-      doctorId: decoded.doctorId
+      doctorId: decoded.doctorId,
+      userType: decoded.userType
     };
 
     next();
 
-  } catch (err) {
+  }catch (err) {
+    if (err.name === "TokenExpiredError") {
+      return res.status(401).json({ message: "Token expired" });
+    }
     return res.status(401).json({ message: "Invalid token" });
   }
 };

@@ -13,11 +13,11 @@ if (!specialization) {
   throw new Error("No specialization selected");
 }
 
-const API_URL = `http://localhost:3000/api/healthcare/doctor/specialization/${encodeURIComponent(specialization)}`;
+const API_URL = `http://127.0.0.1:3000/api/healthcare/doctor/specialization/${encodeURIComponent(specialization)}`;
 
 async function loadDoctors() {
   try {
-    const res = await fetch(API_URL);
+    const res = await fetch(API_URL, { credentials: "include" });
     const doctors = await res.json();
 
     if (!Array.isArray(doctors) || doctors.length === 0) {

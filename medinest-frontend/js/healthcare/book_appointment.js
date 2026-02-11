@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:3000/api/healthcare";
+const API_BASE = "http://127.0.0.1:3000/api/healthcare";
 
 const params = new URLSearchParams(window.location.search);
 const doctorId = params.get("doctorId");
@@ -23,11 +23,11 @@ const problem = document.getElementById("problem");
 const bookBtn = document.getElementById("bookBtn");
 
 let selectedSlotId = null;
-const API_URL = `http://localhost:3000/api/healthcare/doctor/specialization/${encodeURIComponent(specialization)}/${encodeURIComponent(doctorId)}`;
+const API_URL = `http://127.0.0.1:3000/api/healthcare/doctor/specialization/${encodeURIComponent(specialization)}/${encodeURIComponent(doctorId)}`;
 
 /* ===================== FETCH DOCTOR ===================== */
 async function loadDoctorProfile() {
-  const res = await fetch(API_URL);
+  const res = await fetch(API_URL, { credentials: "include" });
   const data = await res.json();
   const doctor = data[0];
 
@@ -70,18 +70,9 @@ document.getElementById("doctorConsultationType").innerText =
 
 /* ===================== FORM CONTEXT ===================== */
 async function loadFormContext() {
-  const token = localStorage.getItem("token");
-  const userType = localStorage.getItem("userType");
-  const headers = {};
-  if (token && userType === "patient") {
-    headers["Authorization"] = `Bearer ${token}`;
-  }
   const res = await fetch(
     `${API_BASE}/book-appointment/form/${specialization}/${doctorId}`,
-    {
-      credentials: "include",
-      headers
-    }
+    { credentials: "include" }
   );
   const { data } = await res.json();
 
@@ -112,7 +103,8 @@ appointmentDate.addEventListener("change", async () => {
   clearError("errorSlot"); // important
 
   const res = await fetch(
-    `${API_BASE}/appointment/doctor/${doctorId}/availability?date=${date}`
+    `${API_BASE}/appointment/doctor/${doctorId}/availability?date=${date}`,
+    { credentials: "include" }
   );
 
   const data = await res.json();
@@ -299,14 +291,6 @@ bookBtn.addEventListener("click", async (e) => {
 
   /* ===================== FORM DATA ===================== */
 
-  const token = localStorage.getItem("token");
-  const userType = localStorage.getItem("userType");
-  if (!token || userType !== "patient") {
-    alert("Please login as a patient to book an appointment.");
-    window.location.href = "/medinest-frontend/auth/healthcare/login.html?redirect=" + encodeURIComponent(window.location.href);
-    return;
-  }
-
   const formData = new FormData();
   formData.append("description", problem.value.trim());
   formData.append("appointment_date", appointmentDate.value);
@@ -324,9 +308,7 @@ bookBtn.addEventListener("click", async (e) => {
 
     const res = await fetch(url, {
       method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`
-      },
+      credentials: "include",
       body: formData
     });
 

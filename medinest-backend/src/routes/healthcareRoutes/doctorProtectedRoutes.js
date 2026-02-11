@@ -7,7 +7,7 @@ const doctorDashboardController = require("../../controllers/healthcareControlle
 const authDoctor = require("../../middleware/authDoctor");
 
 // Protected route
-// http://localhost:3000/api/healthcare/doctor/dashboard
+// http://127.0.0.1:3000/api/healthcare/doctor/dashboard
 router.get("/dashboard", authDoctor, doctorDashboardController.getDashboard);
 
 module.exports = router;

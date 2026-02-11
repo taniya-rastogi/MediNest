@@ -7,7 +7,7 @@ const patientAuthController = require("../../controllers/healthcareController/pa
 
 
 // Login patient
-// http://localhost:3000/api/healthcare/patient/auth/login
+// http://127.0.0.1:3000/api/healthcare/patient/auth/login
 router.post("/login", patientAuthController.patientLogin);
 //Example: body data
 // {

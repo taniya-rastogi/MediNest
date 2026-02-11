@@ -1,10 +1,10 @@
-const API_URL = "http://localhost:3000/api/healthcare/specializations";
+const API_URL = "http://127.0.0.1:3000/api/healthcare/specializations";
 
 
 
 async function loadSpecializations() {
   try {
-    const response = await fetch(API_URL);
+    const response = await fetch(API_URL, { credentials: "include" });
 
     if (!response.ok) {
       throw new Error("Failed to fetch specializations");
