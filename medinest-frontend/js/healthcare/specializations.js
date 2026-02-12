@@ -40,11 +40,11 @@ function renderSpecializations(specializations) {
         class="mx-auto mb-2 w-16 h-16 object-cover rounded-full"
       />
 
-      <p class="font-semibold text-gray-800">
+      <p class="font-bold text-[#0f766e]">
         ${spec.specialization_name}
       </p>
 
-      <p class="text-sm text-gray-600 mt-1 line-clamp-2">
+      <p class="text-sm text-[#0f766e] mt-1 line-clamp-2">
         ${spec.description}
       </p>
     `;

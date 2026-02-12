@@ -1,357 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MediNest</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* for smooth scrolling on website */
-      html {
-        scroll-behavior: smooth;
-      }
-    </style>
-  </head>
-  <body class="font-sans text-gray-800">
-    <!-- Navbar -->
-    <nav class="bg-white shadow-md fixed w-full z-10">
-      <div
-        class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16"
-      >
-        <h1  class="text-blue-600 text-2xl font-bold">
-          MediNest<span class="text-green-400">+</span>
-        </h1>
-        <button
-          id="menu-btn"
-          class="block md:hidden text-2xl text-blue-600 focus:outline-none"
-        >
-          ☰
-        </button>
 
-        <ul id="menu" class="hidden md:flex space-x-6">
-          <li><a  href="#home" class="hover:text-blue-600">Home</a></li>
-          <li><a  href="#about" class="hover:text-blue-600">About</a></li>
-          <li><a  href="#services" class="hover:text-blue-600">Services</a></li>
-          <li><a  href="../public/healthcare/healthcare.html" class="hover:text-blue-600">Healthcare</a></li>
-          <li><a  href="../public/shopping/shopping.html" class="hover:text-blue-600">Shopping</a></li>
-          <li><a  href="../public/education/education.html" class="hover:text-blue-600">Education</a></li>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediNest</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* for smooth scrolling on website */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
 
+<body class="font-sans text-gray-800 bg-[#d1fae5]">
+  <!-- Navbar -->
+  <nav class="bg-[#0f766e] shadow-md fixed w-full z-10 text-white">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
+      <h1 class="text-white text-2xl font-bold">
+        MediNest<span class="text-green-400">+</span>
+      </h1>
+      <button id="menu-btn" class="block md:hidden text-2xl text-blue-600 focus:outline-none">
+        ☰
+      </button>
 
-          <!-- Login Button -->
-          <li >
-            <a 
-              href="/login/main_login.html"
-              class= " bg-blue-600ml-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-            >
-              Login
-            </a>
-          </li>
-        </ul>
+      <ul id="menu" class="hidden md:flex space-x-6">
+        <li><a href="#home" class="gray-200">Home</a></li>
+        <li><a href="#about" class="gray-200">About</a></li>
+        <li><a href="#services" class="gray-200">Services</a></li>
+        <li><a href="../public/healthcare/healthcare.html" class="gray-200">Healthcare</a></li>
+        <li><a href="../public/shopping/shopping.html" class="gray-200">Shopping</a></li>
 
-        <!-- login user form -->
-      </div>
+        <!-- Login Button -->
+        <li>
+          <a href="/login/main_login.html"
+            class="bg-white text-[#0f766e] px-4 py-2 rounded-lg hover:bg-gray-100 transition">
+            Login
+          </a>
+        </li>
+      </ul>
 
-      <!-- Mobile Menu -->
-      <div id="mobile-menu" class="hidden bg-white md:hidden px-4 pb-4">
-        <a href="#home" class="block py-2 hover:text-blue-600">Home</a>
-        <a href="#about" class="block py-2 hover:text-blue-600">About</a>
-        <a href="#services" class="block py-2 hover:text-blue-600">Services</a>
-        <a href="#doctors" class="block py-2 hover:text-blue-600">Healthcare</a>
-        <a href="#contact" class="block py-2 hover:text-blue-600">Shopping</a>
-        <a href="#contact" class="block py-2 hover:text-blue-600">Education</a>
+      <!-- login user form -->
+    </div>
 
-        <!-- Login Button in Mobile Menu -->
-        <a 
-          href="login.html" 
-          class="bg-blue-600 inline-block w-full text-center text-white py-2 rounded-lg hover:bg-blue-700 transition"
-        >
-          Login
-        </a>
-      </div>
-    </nav>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden bg-white md:hidden px-4 pb-4">
+      <a href="#home" class="block py-2 gray-200">Home</a>
+      <a href="#about" class="block py-2 gray-200">About</a>
+      <a href="#services" class="block py-2 gray-200">Services</a>
+      <a href="#doctors" class="block py-2 gray-200">Healthcare</a>
+      <a href="#contact" class="block py-2 gray-200">Shopping</a>
 
-    <!-- Hero Section (Full Screen Background Image) -->
-    <section
-      id="home"
-      class="relative h-screen flex items-center justify-center bg-cover bg-center bg-fixed"
-      style="
-        background-image: url(../images/main_page_images/vecteezy_medical-emergency-equipment-hospital-medicine-aid-medic_45735604.jpg);
-      "
-    >
-      <!-- Overlay -->
-      <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      <!-- Login Button in Mobile Menu -->
+      <a href="login.html"
+        class="bg-blue-600 inline-block w-full text-center text-white py-2 rounded-lg hover:bg-blue-700 transition">
+        Login
+      </a>
+    </div>
+  </nav>
 
-      <!-- Content -->
-      <div class="relative z-10 text-center text-white px-4 ">
-        <h6 class=" md:text-5xl font-bold mb-4 ">
-          MediNest <br>"All In One Platform For Every Healthcare Need"
-        </h6>
-        <p class="text-lg md:text-xl mb-6 max-w-2xl mx-auto ">
-          You can consult doctors, buy medical products, and get dedicated medical education and career guidance — all in one easy-to-use platform that saves your time and effort.
-        </p>
-        <button 
-          class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg transition"
-        >
-          Register
-        </button>
-      </div>
-    </section>
+  <!-- Hero Section (Full Screen Background Image) -->
+  <section id="home" class="relative h-screen flex items-center justify-center bg-cover bg-center bg-fixed" style="
+        background-image: url(../images/main_page_images/logo_make_11_06_2023_89.jpg);
+      ">
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
 
-    <!-- About Section -->
-    <section id="about" class="max-w-6xl mx-auto px-6 py-12">
-      <h3 class="text-3xl font-semibold text-center text-blue-600 mb-8">
-        About Us
-      </h3>
-      <p class="text-center text-gray-600 leading-relaxed">
-       MediNest is a trusted digital platform built to simplify how people access healthcare. We bring together doctor consultations, medicine purchases, health records, and medical education — all in one place. Our mission is to make healthcare more convenient, affordable, and easy to manage for everyone.
-
-With MediNest, users can connect with verified doctors, order essential medical products, and learn about health and medical careers through reliable resources. We aim to bridge the gap between people and healthcare services by creating a seamless, user-friendly experience.
-
-MediNest continues to grow with a simple vision — to be your one-stop destination for every healthcare need, helping you stay informed, healthy, and supported at every step.
+    <!-- Content -->
+    <div class="relative text-center text-white px-4">
+      <h6 class=" md:text-5xl font-bold mb-4">
+        MediNest <br>"All In One Platform For Every Healthcare Need"
+      </h6>
+      <p class="text-lg md:text-xl mb-6 max-w-2xl mx-auto ">
+        You can consult doctors and can buy medical products — all in one easy-to-use platform that saves your time and
+        effort.
       </p>
-    </section>
-
-    <!-- Services Section -->
-    <!-- Services Section -->
-<section id="services" class="bg-gray-50 py-12">
-  <h3 class="text-3xl font-semibold text-center text-blue-600 mb-8">
-    Our Services
-  </h3>
-
-  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
-
-    <!-- Healthcare -->
-    <a href="../public/healthcare/healthcare.html" class="block">
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center cursor-pointer">
-        <img style="height: 95px; margin: auto;" src="../images/index_page_images/img/card_images/card1.png" alt="">
-        <h4 class="text-xl font-bold text-blue-700 mb-2">Healthcare</h4>
-        <p class="text-gray-600">
-          Consult verified doctors, manage your health records, and receive trusted care — anytime, anywhere.
-        </p>
-      </div>
-    </a>
-
-    <!-- Shopping -->
-    <a href="../public/shopping/shopping.html" class="block">
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center cursor-pointer">
-        <img style="height: 95px; margin: auto;" src="../images/index_page_images/img/card_images/card2.png" alt="">
-        <h4 class="text-xl font-bold text-blue-700 mb-2">Shopping</h4>
-        <p class="text-gray-600">
-          Order medicines and healthcare essentials easily with secure, doorstep delivery at affordable prices.
-        </p>
-      </div>
-    </a>
-
-    <!-- Education -->
-    <a href="../public/education/education.html" class="block">
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center cursor-pointer">
-        <img style="height: 95px; margin: auto;" src="../images/index_page_images/img/card_images/card3.png" alt="">
-        <h4 class="text-xl font-bold text-blue-700 mb-2">Education</h4>
-        <p class="text-gray-600">
-          Learn, explore, and build a medical career with reliable resources and expert guidance.
-        </p>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-
-    <section class="bg-gray-50 py-16" id="testimonials">
-  <!-- <div class="max-w-6xl mx-auto px-6 text-center mb-12">
-    <h2 class="text-3xl font-bold text-gray-800">What Our Users Say</h2>
-    <p class="text-gray-500 mt-2">Real stories from people who trust Medico</p>
-  </div> -->
-
-  <div class="space-y-16">
-    <!-- Testimonial 1 - Healthcare -->
-    <a href="../public/healthcare/healthcare.html" class="block">
-    <div class="flex flex-col md:flex-row items-center max-w-5xl mx-auto bg-white shadow-md rounded-lg overflow-hidden cursor-pointer hover:shadow-xl transition">
-
-      <div class="md:w-2/3 p-8 text-left">
-        <h3 class="text-xl font-semibold text-blue-600 mb-3">Healthcare Services</h3>
-        <p class="text-gray-600 mb-4 leading-relaxed">
-          “Access trusted healthcare services from the comfort of your home. Book doctor consultations, manage your medical records, and get health updates — all in one place. MediNest helps you connect with verified professionals and ensures you get the care you need, when you need it.”
-        </p>
-        <!-- <p class="text-gray-600 mb-4 leading-relaxed">
-          “It has made my routine check-ups much simpler. I don’t have to wait in long queues anymore, 
-          and I get reminders before every appointment. The support team is always responsive and polite.”
-        </p> -->
-        <!-- <p class="font-medium text-gray-800">— Dr. Neha Sharma</p>
-        <p class="text-sm text-gray-500">General Physician, Delhi</p> -->
-      </div>
-      <div class="md:w-1/3">
-        <img src="../images/index_page_images/img/testimonial_images/Testimonial1.png" alt="Healthcare User" class="w-full h-full object-cover">
-      </div>
-     </div>
-    <!-- </div> -->
-    </a>
-
-
-    <!-- Testimonial 2 - Shopping -->
-    <a href="../public/education/education.html" class="block">
-  <div class="flex flex-col md:flex-row-reverse items-center max-w-5xl mx-auto bg-white shadow-md rounded-lg overflow-hidden cursor-pointer hover:shadow-xl transition">
-      <div class="md:w-2/3 p-8 text-left">
-        <h3 class="text-xl font-semibold text-blue-600  mb-3">Medical Shopping</h3>
-        <p class="text-gray-600 mb-4 leading-relaxed">
-          “Find and order all your healthcare essentials in one easy-to-use platform. From medicines and medical equipment to daily health products, MediNest makes buying reliable and affordable items simple and secure — delivered right to your doorstep.”
-        </p>
-        <!-- <p class="text-gray-600 mb-4 leading-relaxed">
-          “The best part is, I get reminders when my essential medicines are about to run out. 
-          Prices are transparent, and I can even compare brands before buying. It’s like having a trusted pharmacy in my pocket.”
-        </p> -->
-        <!-- <p class="font-medium text-gray-800">— Rajesh Verma</p>
-        <p class="text-sm text-gray-500">Customer, Mumbai</p> -->
-      </div>
-      <div class="md:w-1/3">
-        <img src="../images/index_page_images/img/testimonial_images/Testimonial2.png" alt="Shopping User" class="w-full h-full object-cover">
-      </div>
+      <button class="bg-white text-[#0f766e] hover:bg-[#0d6f63] hover:text-white px-8 py-3 rounded-lg text-lg transition">
+        Register
+      </button>
     </div>
-</a>
+  </section>
 
-    <!-- Testimonial 3 - Education -->
-    <a href="../public/education/education.html" class="block">
-  <div class="flex flex-col md:flex-row items-center max-w-5xl mx-auto bg-white shadow-md rounded-lg overflow-hidden cursor-pointer hover:shadow-xl transition">
-      <div class="md:w-2/3 p-8 text-left">
-        <h3 class="text-xl font-semibold text-blue-600 mb-3">Medical Education</h3>
-        <p class="text-gray-600 mb-4 leading-relaxed">
-          “Explore medical learning resources and career guidance designed for students and aspiring professionals. MediNest provides access to study materials, courses, and healthcare career insights — helping you learn, grow, and build a future in the medical field.”
-        </p>
-        <!-- <p class="text-gray-600 mb-4 leading-relaxed">
-          “I especially love their video lessons that break down complex topics into simple explanations. 
-          It has made learning more interactive and enjoyable — I feel more confident before exams now!”
-        </p> -->
-        <!-- <p class="font-medium text-gray-800">— Aditi Singh</p>
-        <p class="text-sm text-gray-500">MBBS Student, Lucknow</p> -->
-      </div>
-      <div class="md:w-1/3">
-        <img src="../images/index_page_images/img/testimonial_images/Testimonials3.png" alt="Education User" class="w-full h-full object-cover">
-      </div>
-    </div>
-  </div>
-    </div>
-</a>
+  <!-- About Section -->
+  <section id="about" class="max-w-6xl mx-auto px-6 py-12">
+    <h3 class="text-3xl font-semibold text-center text-[#0f766e] mb-8">
+      About Us
+    </h3>
+    <p class="text-center text-gray-600 leading-relaxed">
+      MediNest is a trusted digital platform built to simplify how people access healthcare. We bring together doctor
+      consultations, medicine purchases, and health records — all in one place. Our mission is to
+      make healthcare more convenient, affordable, and easy to manage for everyone.
 
-</section>
+      With MediNest, users can connect with verified doctors, order essential medical products. We aim to bridge the gap
+      between people and healthcare services by
+      creating a seamless, user-friendly experience.
 
+      MediNest continues to grow with a simple vision — to be your one-stop destination for every healthcare need,
+      helping you stay informed, healthy, and supported at every step.
+    </p>
+  </section>
 
+  
+  <!-- Services Section -->
+  <section id="services" class="bg-[#d1fae5] py-12">
+    <h3 class="text-3xl font-semibold text-center text-[#0f766e] mb-8">
+      Our Services
+    </h3>
 
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6 justify-items-center">
 
-    <!-- Contact Section -->
-    <section id="contact" class="bg-blue-50 py-12">
-      <h3 class="text-3xl font-semibold text-center text-blue-600 mb-8">
-        We value your 'Suggestions'
-      </h3>
-      <div class="max-w-4xl mx-auto px-6">
-        <form class="bg-white p-6 rounded-lg shadow space-y-4">
-          <input
-            type="text"
-            placeholder="Your Name"
-            class="w-full border rounded p-2"
-            required
-          />
-          <input
-            type="email"
-            placeholder="Your Email"
-            class="w-full border rounded p-2"
-            required
-          />
-          <textarea
-            placeholder="Your Message"
-            class="w-full border rounded p-2"
-            rows="4"
-          ></textarea>
-          <button
-            type="submit"
-            class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
-          >
-            Send Message
-          </button>
-        </form>
-      </div>
-    </section>
-    <!-- Footer -->
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 pt-12 pb-6">
-      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- About Section -->
-        <div>
-          <h4 class="text-2xl font-semibold text-white mb-4">
-            MediNest<span class="text-green-400">+</span>
-          </h4>
-          <p class="text-gray-400 leading-relaxed">
-            You can consult doctors, buy medical products, and get dedicated medical education and career guidance — all in one easy-to-use platform that saves your time and effort.
+      <!-- Healthcare -->
+      <a href="../public/healthcare/healthcare.html" class="block">
+        <div
+          class="bg-white p-6 rounded-lg shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center cursor-pointer">
+          <img style="height: 95px; margin: auto;" src="../images/index_page_images/img/card_images/Gemini_Generated_Image_sihtursihtursiht-removebg-preview.png" alt="">
+          <h4 class="text-xl font-bold text-[#0f766e] mb-2">Healthcare</h4>
+          <p class="text-gray-600">
+            Consult verified doctors, manage your health records, and receive trusted care — anytime, anywhere.
           </p>
-          <div class="flex space-x-4 mt-4">
-            <a href="#" class="hover:text-blue-400">Facebook</a>
-            <a href="#" class="hover:text-blue-400">Instagram</a>
-            <a href="#" class="hover:text-blue-400">LinkedIn</a>
+        </div>
+      </a>
+
+      <!-- Shopping -->
+      <a href="../public/shopping/shopping.html" class="block">
+        <div
+          class="bg-white p-6 rounded-lg shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center cursor-pointer">
+          <img style="height: 95px; margin: auto;" src="../images/index_page_images/img/card_images/Gemini_Generated_Image_1pz4zd1pz4zd1pz4-removebg-preview.png" alt="">
+          <h4 class="text-xl font-bold text-[#0f766e] mb-2">Shopping</h4>
+          <p class="text-gray-600">
+            Order medicines and healthcare essentials easily with secure, doorstep delivery at affordable prices.
+          </p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+
+  <section class="bg-[#d1fae5] py-16" id="testimonials">
+
+    <div class="space-y-16">
+      <!-- Testimonial 1 - Healthcare -->
+      <a href="../public/healthcare/healthcare.html" class="block">
+        <div
+          class="flex flex-col md:flex-row items-center max-w-5xl mx-auto bg-white shadow-md rounded-lg overflow-hidden cursor-pointer hover:shadow-xl transition">
+
+          <div class="md:w-2/3 p-8 text-left">
+            <h3 class="text-xl font-semibold text-[#0f766e] mb-3">Healthcare Services</h3>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              “Access trusted healthcare services from the comfort of your home. Book doctor consultations, manage your
+              medical records, and get health updates — all in one place. MediNest helps you connect with verified
+              professionals and ensures you get the care you need, when you need it.”
+            </p>
+
+          </div>
+          <div class="md:w-1/3">
+            <img src="../images/index_page_images/img/testimonial_images/Gemini_Generated_Image_b1qprnb1qprnb1qp.png" alt="Healthcare User"
+              class="w-full h-full object-cover">
           </div>
         </div>
+        <!-- </div> -->
+      </a>
 
-        <!-- Quick Links -->
-        <div class="text-center md:text-left">
-          <h4 class="text-xl font-semibold text-white mb-4">Quick Links</h4>
-          <ul class="space-y-2">
-            <li><a href="#home" class="hover:text-blue-400">Home</a></li>
-            <li><a href="#about" class="hover:text-blue-400">About Us</a></li>
-            <li>
-              <a href="#services" class="hover:text-blue-400">Our Services</a>
-            </li>
-            <li>
-              <a href="#doctors" class="hover:text-blue-400">Our Doctors</a>
-            </li>
-            <li>
-              <a href="#contact" class="hover:text-blue-400">Contact Us</a>
-            </li>
-          </ul>
+
+      <!-- Testimonial 2 - Shopping -->
+      <a href="../public/" class="block">
+        <div
+          class="flex flex-col md:flex-row-reverse items-center max-w-5xl mx-auto bg-white shadow-md rounded-lg overflow-hidden cursor-pointer hover:shadow-xl transition">
+          <div class="md:w-2/3 p-8 text-left">
+            <h3 class="text-xl font-semibold text-[#0f766e]  mb-3">Medical Shopping</h3>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              “Find and order all your healthcare essentials in one easy-to-use platform. From medicines and medical
+              equipment to daily health products, MediNest makes buying reliable and affordable items simple and secure
+              — delivered right to your doorstep.”
+            </p>
+          </div>
+          <div class="md:w-1/3">
+            <img src="../images/index_page_images/img/testimonial_images/Gemini_Generated_Image_xwi9t2xwi9t2xwi9.png" alt="Shopping User"
+              class="w-full h-full object-cover">
+          </div>
         </div>
+      </a>
 
-        <!-- Contact Info -->
-        <div>
-          <h4 class="text-xl font-semibold text-white mb-4">Contact Info</h4>
-          <ul class="space-y-3">
-            <li>
-              <span class="font-semibold text-white">📍 Address:</span> MediNest Center, New Delhi, India
-            </li>
-            <li>
-              <span class="font-semibold text-white">📞 Phone:</span> +91 98765
-              43210
-            </li>
-            <li>
-              <span class="font-semibold text-white">📧 Email:</span>
-              info@medinest.com
-            </li>
-            <li>
-              <span class="font-semibold text-white">🕒 Timings:</span> Mon–Sat:
-              9 AM – 9 PM | Emergency 24x7
-            </li>
-          </ul>
-        </div>
-      </div>
+  </section>
 
-      <!-- Bottom Bar -->
-      <div
-        class="border-t border-gray-700 mt-10 pt-4 text-center text-gray-400 text-sm"
-      >
-        <p>© 2025 HealthCare+. All Rights Reserved.</p>
-        <p class="mt-2">
-          <a href="#" class="hover:text-blue-400">Privacy Policy</a> •
-          <a href="#" class="hover:text-blue-400">Terms & Conditions</a>
+  <!-- Contact Section -->
+  <h3 class="text-3xl font-semibold text-center text-[#0f766e] mb-8">
+    We value your 'Suggestions'
+  </h3>
+  <div class="max-w-4xl mx-auto px-6 mb-20">
+    <form class="bg-white p-6 rounded-lg shadow space-y-4">
+      <input type="text" placeholder="Your Name" class="w-full border rounded p-2" required />
+      <input type="email" placeholder="Your Email" class="w-full border rounded p-2" required />
+      <textarea placeholder="Your Message" class="w-full border rounded p-2" rows="4"></textarea>
+      <button type="submit" class="bg-[#0f766e] text-white px-6 py-2 rounded hover:bg-[#0d6f63]">
+        Send Message
+      </button>
+    </form>
+  </div>
+  </section>
+  <!-- Footer -->
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 pt-12 pb-6">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- About Section -->
+      <div>
+        <h4 class="text-2xl font-semibold text-white mb-4">
+          MediNest<span class="text-green-400">+</span>
+        </h4>
+        <p class="text-gray-400 leading-relaxed">
+          You can consult doctors, buy medical products, and get dedicated medical education and career guidance — all
+          in one easy-to-use platform that saves your time and effort.
         </p>
+        <div class="flex space-x-4 mt-4">
+          <a href="#" class="hover:text-[#0f766e]">Facebook</a>
+          <a href="#" class="hover:text-[#0f766e]">Instagram</a>
+          <a href="#" class="hover:text-[#0f766e]">LinkedIn</a>
+        </div>
       </div>
-    </footer>
 
-    <!-- JavaScript for mobile menu -->
-    <script>
-      const menuBtn = document.getElementById("menu-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
-      menuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
+      <!-- Quick Links -->
+      <div class="text-center md:text-left">
+        <h4 class="text-xl font-semibold text-white mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="#home" class="hover:text-[#0f766e]">Home</a></li>
+          <li><a href="#about" class="hover:text-[#0f766e]">About Us</a></li>
+          <li>
+            <a href="#services" class="hover:text-[#0f766e]">Our Services</a>
+          </li>
+          <li>
+            <a href="#doctors" class="hover:text-[#0f766e]">Our Doctors</a>
+          </li>
+          <li>
+            <a href="#contact" class="hover:text-[#0f766e]">Contact Us</a>
+          </li>
+        </ul>
+      </div>
 
-     
+      <!-- Contact Info -->
+      <div>
+        <h4 class="text-xl font-semibold text-white mb-4">Contact Info</h4>
+        <ul class="space-y-3">
+          <li>
+            <span class="font-semibold text-white">📍 Address:</span> MediNest Center, New Delhi, India
+          </li>
+          <li>
+            <span class="font-semibold text-white">📞 Phone:</span> +91 98765
+            43210
+          </li>
+          <li>
+            <span class="font-semibold text-white">📧 Email:</span>
+            info@medinest.com
+          </li>
+          <li>
+            <span class="font-semibold text-white">🕒 Timings:</span> Mon–Sat:
+            9 AM – 9 PM | Emergency 24x7
+          </li>
+        </ul>
+      </div>
+    </div>
 
-    </script>
-  </body>
+    <!-- Bottom Bar -->
+    <div class="border-t border-gray-700 mt-10 pt-4 text-center text-gray-400 text-sm">
+      <p>© 2025 HealthCare+. All Rights Reserved.</p>
+      <p class="mt-2">
+        <a href="#" class="hover:text-[#0f766e]">Privacy Policy</a> •
+        <a href="#" class="hover:text-[#0f766e]">Terms & Conditions</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for mobile menu -->
+  <script>
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+
+
+  </script>
+</body>
+
 </html>
