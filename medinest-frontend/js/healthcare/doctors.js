@@ -1,21 +1,19 @@
-document.addEventListener("DOMContentLoaded", fetchDoctors);
+let currentPage = 1;
 
-async function fetchDoctors() {
+document.addEventListener("DOMContentLoaded", () => {
+  fetchDoctors(currentPage);
+});
+
+async function fetchDoctors(page) {
   try {
     const response = await fetch(
-      "http://127.0.0.1:3000/api/healthcare/doctor-public/our/all/doctors",
-      {
-        method: "GET",
-        credentials: "include"
-      }
+      `http://127.0.0.1:3000/api/healthcare/doctor/specialization/our/all/doctors?page=${(page)}`
     );
 
-    if (!response.ok) {
-      throw new Error("Failed to fetch doctors");
-    }
+    const result = await response.json();
 
-    const doctors = await response.json();
-    renderDoctors(doctors);
+    renderDoctors(result.data);
+    renderPagination(result.totalPages, result.currentPage);
 
   } catch (error) {
     console.error("Error:", error);
@@ -26,17 +24,7 @@ function renderDoctors(doctors) {
   const grid = document.getElementById("doctorsGrid");
   grid.innerHTML = "";
 
-  if (!doctors || doctors.length === 0) {
-    grid.innerHTML = `
-      <p class="text-white text-center col-span-3">
-        No doctors available.
-      </p>
-    `;
-    return;
-  }
-
   doctors.forEach(doctor => {
-
     const card = `
       <div class="bg-white rounded-2xl shadow-lg p-6 text-center hover:scale-105 transition">
 
@@ -52,7 +40,7 @@ function renderDoctors(doctors) {
         </p>
 
         <p class="text-sm text-gray-600 mt-2">
-          ${doctor.experience_years || 0}+ Years Experience
+          ${doctor.experience_years}+ Years Experience
         </p>
 
         <p class="text-sm text-gray-600">
@@ -62,11 +50,6 @@ function renderDoctors(doctors) {
         <p class="text-sm text-gray-500 mt-3">
           ${doctor.bio || ""}
         </p>
-
-        <button class="mt-4 w-full bg-gradient-to-r from-[#0f766e] to-[#2dd4bf]
-                       text-white py-2 rounded-lg font-semibold hover:opacity-90">
-          Book Appointment
-        </button>
       </div>
     `;
 
@@ -74,3 +57,27 @@ function renderDoctors(doctors) {
   });
 }
 
+function renderPagination(totalPages, currentPage) {
+  const container = document.getElementById("pagination");
+  container.innerHTML = "";
+
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = `
+      <button 
+        onclick="changePage(${i})"
+        class="px-4 py-2 rounded-lg ${
+          i === currentPage
+            ? "bg-white text-[#0f766e]"
+            : "bg-[#0f766e] text-white"
+        }">
+        ${i}
+      </button>
+    `;
+    container.insertAdjacentHTML("beforeend", btn);
+  }
+}
+
+function changePage(page) {
+  currentPage = page;
+  fetchDoctors(page);
+}

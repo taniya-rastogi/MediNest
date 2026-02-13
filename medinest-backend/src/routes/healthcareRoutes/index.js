@@ -6,8 +6,11 @@ const router = express.Router();
 // Specializations
 router.use("/specializations", require("./specializationsRoutes"));
 
+// // Doctor public routes
+// router.use("/doctor-public", require("./doctorPublicRoutes"));
+
 // Doctor public routes
-router.use("/doctor-public", require("./doctorPublicRoutes"));
+router.use("/doctor/specialization", require("./doctorPublicRoutes"));
 
 // Doctor auth Register/login
 router.use("/doctor/auth", require("./doctorAuthRoutes"));

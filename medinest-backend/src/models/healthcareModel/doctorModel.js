@@ -3,16 +3,23 @@
 const pool = require('../../config/db_connection');
 
 //-------- Get all doctors --------
-async function getAllDoctors() {
+async function getAllDoctors(page, limit) {
+  const offset = (page - 1) * limit;
   const sql = `
     SELECT d.*, s.specialization_name AS specialization
     FROM doctors d
     JOIN specializations s ON d.specialization_id = s.id
+    LIMIT ? OFFSET ?
   `;
 
-  const [rows] = await pool.query(sql);
-  return rows;
+  const [rows] = await pool.query(sql, [limit, offset]);
 
+  // total count for pagination
+  const [[{ total }]] = await pool.query(
+    `SELECT COUNT(*) as total FROM doctors`
+  );
+
+  return { rows, total };
 }
 
 

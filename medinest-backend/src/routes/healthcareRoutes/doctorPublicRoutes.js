@@ -6,15 +6,15 @@ const router = require("express").Router();
 const doctorsController = require("../../controllers/healthcareController/doctorsController");
 
 // GET All doctors
-// http://127.0.0.1:3000/api/healthcare/doctor-public/our/all/doctors
+// http://127.0.0.1:3000/api/healthcare/doctor/specialization/our/all/doctors?page=1
 router.get("/our/all/doctors", doctorsController.getAllDoctors);
 
 // GET List doctors by specialization
-// http://127.0.0.1:3000/api/healthcare/doctor-public/:specialization
+// http://127.0.0.1:3000/api/healthcare/doctor/specialization/:specialization
 router.get("/:specialization", doctorsController.getDoctorsBySpecialization);
 
 // GET specific doctor
-// http://127.0.0.1:3000/api/healthcare/doctor-public/:specialization/:doctor_id
+// http://127.0.0.1:3000/api/healthcare/doctor/specialization/:specialization/:doctor_id
 router.get("/:specialization/:doctor_id", doctorsController.getADoctorByIdAndSpecialization);
 
 module.exports = router;

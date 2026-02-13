@@ -5,14 +5,24 @@ const bcrypt = require("bcryptjs");
 
 // -------- GET Routes --------
 
+
 const getAllDoctors = async (req, res) => {
   try {
-    const allDoctors = await doctorModel.getAllDoctors();
 
-    if(allDoctors.length == 0){
+    const page = parseInt(req.query.page) || 1;
+    const limit = 6;
+
+    const {rows, total} = await doctorModel.getAllDoctors(page, limit);
+
+    if(rows.length == 0){
       return res.status(404).json({message: 'No doctor found1'});
     }
-    res.status(200).json(allDoctors);
+    res.status(200).json({
+      data: rows,
+      total,
+      currentPage: page,
+      totalPages: Math.ceil(total / limit)
+    });
 
   } catch (error) {
     console.log(error);
