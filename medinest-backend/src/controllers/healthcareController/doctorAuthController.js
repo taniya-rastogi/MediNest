@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const doctorAuthModel = require("../../models/healthcareModel/doctorAuthModel");
 
 const doctorLogin = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body; //share with frontend
 
   try {
     const doctor = await doctorAuthModel.getDoctorByEmail(email);

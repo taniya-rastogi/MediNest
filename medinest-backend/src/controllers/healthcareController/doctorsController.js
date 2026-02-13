@@ -5,6 +5,21 @@ const bcrypt = require("bcryptjs");
 
 // -------- GET Routes --------
 
+const getAllDoctors = async (req, res) => {
+  try {
+    const allDoctors = await doctorModel.getAllDoctors();
+
+    if(allDoctors.length == 0){
+      return res.status(404).json({message: 'No doctor found1'});
+    }
+    res.status(200).json(allDoctors);
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({message: 'Database error No doctor found'});
+  }
+}
+
 const getDoctorsBySpecialization = async (req, res) => {
   const specialization = req.params.specialization;
 
@@ -12,7 +27,7 @@ const getDoctorsBySpecialization = async (req, res) => {
     const doctors = await doctorModel.getDoctorsBySpecialization(specialization);
 
     if (doctors.length === 0) {
-      return res.status(404).json({ message: 'No doctors found' });
+      return res.status(404).json({ message: 'No doctors found by specialization' });
     }
 
     res.status(200).json(doctors);
@@ -29,7 +44,7 @@ const getADoctorByIdAndSpecialization = async (req, res) => {
     const doctor = await doctorModel.getADoctorByIdAndSpecialization(specialization, doctor_id);
 
     if (doctor.length === 0) {
-      return res.status(404).json({ message: 'No doctor hey2 found' });
+      return res.status(404).json({ message: 'No doctor found by id and specialization' });
     }
 
     res.status(200).json(doctor);
@@ -127,5 +142,6 @@ const registerDoctor = async (req, res) => {
 module.exports = {
   getDoctorsBySpecialization,
   getADoctorByIdAndSpecialization,
-  registerDoctor
+  registerDoctor,
+  getAllDoctors
 };

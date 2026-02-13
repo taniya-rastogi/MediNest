@@ -1,36 +1,20 @@
-// doctorDashboardController.js (Protected route response)
-// src/controller/healthcareController/doctorDashboardController.js
-
-const pool = require("../../config/db_connection");
+const doctorDashboardModel = require("../../models/healthcareModel/doctorDashboardModel");
 
 const getDashboard = async (req, res) => {
   try {
-    const doctorId = req.doctor.id;
+    const doctorId = req.doctor.doctorId;
 
-    const [rows] = await pool.query(
-      `SELECT 
-        id,
-        full_name,
-        email,
-        phone,
-        gender,
-        specialization_id,
-        qualification,
-        experience_years,
-        clinic_hospital_name,
-        location,
-        consultation_type,
-        consultation_fee,
-        bio,
-        dp_url
-      FROM doctors 
-      WHERE id = ?`,
-      [doctorId]
-    );
+    const doctor = await doctorDashboardModel.findDoctorById(doctorId);
+
+    if (!doctor) {
+      return res.status(404).json({
+        message: "Doctor not found"
+      });
+    }
 
     return res.json({
-      message: "Doctor dashboard",
-      doctor: rows[0]
+      message: "Doctor dashboard 1",
+      data: doctor
     });
 
   } catch (error) {
@@ -40,4 +24,3 @@ const getDashboard = async (req, res) => {
 };
 
 module.exports = { getDashboard };
-

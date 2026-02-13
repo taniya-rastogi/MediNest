@@ -61,7 +61,7 @@ function renderSpecializations(specializations) {
 /* ---------- Navigation Function ---------- */
 function goToDoctors(specialization) {
     window.location.href =
-      `doctors.html?specialization=${encodeURIComponent(specialization)}`;
+      `doctors_by_specialization.html?specialization=${encodeURIComponent(specialization)}`;
 }
 
 // Load data when page loads

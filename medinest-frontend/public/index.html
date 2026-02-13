@@ -34,7 +34,7 @@
 
         <!-- Login Button -->
         <li>
-          <a href="/login/main_login.html"
+          <a href="../auth/healthcare/login.html"
             class="bg-white text-[#0f766e] px-4 py-2 rounded-lg hover:bg-gray-100 transition">
             Login
           </a>
@@ -76,9 +76,24 @@
         You can consult doctors and can buy medical products — all in one easy-to-use platform that saves your time and
         effort.
       </p>
-      <button class="bg-white text-[#0f766e] hover:bg-[#0d6f63] hover:text-white px-8 py-3 rounded-lg text-lg transition">
-        Register
-      </button>
+
+      <div class="relative group z-50">
+        <button
+          class="bg-white text-[#0f766e] hover:bg-[#0d6f63] hover:text-white px-8 py-3 rounded-lg text-lg transition">
+          Register ▾
+        </button>
+        <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-40 bg-white text-gray-700 rounded-lg shadow-lg
+      opacity-0 invisible group-hover:opacity-100 group-hover:visible
+      transition-all duration-200 z-50">
+          <a href="../auth/healthcare/doctor_register.html" class="block px-4 py-2 hover:bg-gray-100 rounded-t-lg">
+            Doctor
+          </a>
+          <a href="../auth/healthcare/patient_register.html" class="block px-4 py-2 hover:bg-gray-100 rounded-b-lg">
+            Patient
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -101,7 +116,7 @@
     </p>
   </section>
 
-  
+
   <!-- Services Section -->
   <section id="services" class="bg-[#d1fae5] py-12">
     <h3 class="text-3xl font-semibold text-center text-[#0f766e] mb-8">
@@ -114,7 +129,9 @@
       <a href="../public/healthcare/healthcare.html" class="block">
         <div
           class="bg-white p-6 rounded-lg shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center cursor-pointer">
-          <img style="height: 95px; margin: auto;" src="../images/index_page_images/img/card_images/Gemini_Generated_Image_sihtursihtursiht-removebg-preview.png" alt="">
+          <img style="height: 95px; margin: auto;"
+            src="../images/index_page_images/img/card_images/Gemini_Generated_Image_sihtursihtursiht-removebg-preview.png"
+            alt="">
           <h4 class="text-xl font-bold text-[#0f766e] mb-2">Healthcare</h4>
           <p class="text-gray-600">
             Consult verified doctors, manage your health records, and receive trusted care — anytime, anywhere.
@@ -126,7 +143,9 @@
       <a href="../public/shopping/shopping.html" class="block">
         <div
           class="bg-white p-6 rounded-lg shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center cursor-pointer">
-          <img style="height: 95px; margin: auto;" src="../images/index_page_images/img/card_images/Gemini_Generated_Image_1pz4zd1pz4zd1pz4-removebg-preview.png" alt="">
+          <img style="height: 95px; margin: auto;"
+            src="../images/index_page_images/img/card_images/Gemini_Generated_Image_1pz4zd1pz4zd1pz4-removebg-preview.png"
+            alt="">
           <h4 class="text-xl font-bold text-[#0f766e] mb-2">Shopping</h4>
           <p class="text-gray-600">
             Order medicines and healthcare essentials easily with secure, doorstep delivery at affordable prices.
@@ -156,8 +175,8 @@
 
           </div>
           <div class="md:w-1/3">
-            <img src="../images/index_page_images/img/testimonial_images/Gemini_Generated_Image_b1qprnb1qprnb1qp.png" alt="Healthcare User"
-              class="w-full h-full object-cover">
+            <img src="../images/index_page_images/img/testimonial_images/Gemini_Generated_Image_b1qprnb1qprnb1qp.png"
+              alt="Healthcare User" class="w-full h-full object-cover">
           </div>
         </div>
         <!-- </div> -->
@@ -177,8 +196,8 @@
             </p>
           </div>
           <div class="md:w-1/3">
-            <img src="../images/index_page_images/img/testimonial_images/Gemini_Generated_Image_xwi9t2xwi9t2xwi9.png" alt="Shopping User"
-              class="w-full h-full object-cover">
+            <img src="../images/index_page_images/img/testimonial_images/Gemini_Generated_Image_xwi9t2xwi9t2xwi9.png"
+              alt="Shopping User" class="w-full h-full object-cover">
           </div>
         </div>
       </a>

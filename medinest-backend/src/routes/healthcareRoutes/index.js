@@ -1,16 +1,13 @@
 // index.js — Master Router for Healthcare
-
+// http://127.0.0.1:3000/api/healthcare
 const express = require('express');
 const router = express.Router();
 
 // Specializations
 router.use("/specializations", require("./specializationsRoutes"));
 
-// All doctors
-// router.use("/doctor", require("./doctorsController")); // future work
-
 // Doctor public routes
-router.use("/doctor/specialization", require("./doctorPublicRoutes"));
+router.use("/doctor-public", require("./doctorPublicRoutes"));
 
 // Doctor auth Register/login
 router.use("/doctor/auth", require("./doctorAuthRoutes"));

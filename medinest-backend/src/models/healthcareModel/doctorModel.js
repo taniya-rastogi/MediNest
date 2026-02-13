@@ -2,9 +2,23 @@
 
 const pool = require('../../config/db_connection');
 
+//-------- Get all doctors --------
+async function getAllDoctors() {
+  const sql = `
+    SELECT d.*, s.specialization_name AS specialization
+    FROM doctors d
+    JOIN specializations s ON d.specialization_id = s.id
+  `;
+
+  const [rows] = await pool.query(sql);
+  return rows;
+
+}
+
+
 //  SELECT d.id, d.name, d.experience, d.phone, d.location, d.rating, s.name AS specialization
 
-// Get doctors by specialization
+//-------- Get doctors by specialization --------
 async function getDoctorsBySpecialization(specialization) {
   const sql = `
     SELECT d.*, s.specialization_name AS specialization
@@ -16,7 +30,7 @@ async function getDoctorsBySpecialization(specialization) {
   return rows;
 }
 
-// Get a doctor by specialization + doctor_id
+// -------- Get a doctor by specialization + doctor_id --------
 async function getADoctorByIdAndSpecialization(specialization, doctor_id) {
   const sql = `
     SELECT d.*, s.specialization_name AS specialization
@@ -28,7 +42,7 @@ async function getADoctorByIdAndSpecialization(specialization, doctor_id) {
   return rows;
 }
 
-// Register a doctor
+// -------- Register a doctor --------
 async function registerDoctor(data) {
 
   // Get specialization ID from specialization Name
@@ -75,7 +89,7 @@ async function registerDoctor(data) {
 
 
 
-module.exports = { getDoctorsBySpecialization, getADoctorByIdAndSpecialization, registerDoctor };
+module.exports = { getDoctorsBySpecialization, getADoctorByIdAndSpecialization, registerDoctor, getAllDoctors};
 
 
 
