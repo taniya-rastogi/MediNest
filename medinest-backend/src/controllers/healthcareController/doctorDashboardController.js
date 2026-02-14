@@ -14,6 +14,7 @@ const getDashboard = async (req, res) => {
 
     return res.json({
       message: "Doctor dashboard 1",
+      success: true,
       data: doctor
     });
 

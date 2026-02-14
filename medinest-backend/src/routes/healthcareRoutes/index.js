@@ -27,6 +27,7 @@ router.use("/appointment", require("./appointmentsRoutes"));
 // Patient auth/login
 router.use("/patient/auth", require("./patientAuthRoutes"));
 
-
+// Logout 
+router.post("/logout", require("../../controllers/healthcareController/logoutController").logoutUser);
 
 module.exports = router;

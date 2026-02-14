@@ -15,50 +15,66 @@
 </head>
 
 <body class="font-sans text-gray-800 bg-[#d1fae5]">
-  <!-- Navbar -->
+
   <nav class="bg-[#0f766e] shadow-md fixed w-full z-10 text-white">
-    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+
+      <!-- Left Side (Logo) -->
       <h1 class="text-white text-2xl font-bold">
         MediNest<span class="text-green-400">+</span>
       </h1>
-      <button id="menu-btn" class="block md:hidden text-2xl text-blue-600 focus:outline-none">
+
+      <!-- Right Side (Menu + DP) -->
+      <div class="flex items-center space-x-6">
+
+        <!-- Desktop Menu -->
+        <ul id="menu" class="hidden md:flex space-x-6 items-center">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="../public/healthcare/healthcare.html">Healthcare</a></li>
+          <li><a href="../public/shopping/shopping.html">Shopping</a></li>
+
+          <li>
+            <a href="../auth/healthcare/login.html"
+              class="bg-white text-[#0f766e] px-4 py-2 rounded-lg hover:bg-gray-100 transition">
+              Login
+            </a>
+          </li>
+        </ul>
+
+        <div class="relative">
+          <!-- Profile Circle -->
+          <div id="navProfileWrapper"
+            class="w-10 h-10 rounded-full bg-white flex items-center justify-center cursor-pointer hover:scale-105 transition shadow overflow-hidden">
+
+            <img src="../images/index_page_images/img/dp.png" alt="Profile"
+              class="w-full h-full object-cover rounded-full" />
+
+          </div>
+
+          <!-- Tooltip Message -->
+          <div id="loginTooltip"
+            class="absolute right-0 mt-2 w-64 bg-white text-gray-700 text-sm p-3 rounded-lg shadow-lg hidden z-50">
+            <p class="font-semibold text-[#0f766e]">You are not logged in</p>
+            <p class="mt-1">
+              Please login or create an account to access your MediNest dashboard.
+            </p>
+          </div>
+        </div>
+
+
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="block md:hidden text-2xl focus:outline-none">
         ☰
       </button>
 
-      <ul id="menu" class="hidden md:flex space-x-6">
-        <li><a href="#home" class="gray-200">Home</a></li>
-        <li><a href="#about" class="gray-200">About</a></li>
-        <li><a href="#services" class="gray-200">Services</a></li>
-        <li><a href="../public/healthcare/healthcare.html" class="gray-200">Healthcare</a></li>
-        <li><a href="../public/shopping/shopping.html" class="gray-200">Shopping</a></li>
-
-        <!-- Login Button -->
-        <li>
-          <a href="../auth/healthcare/login.html"
-            class="bg-white text-[#0f766e] px-4 py-2 rounded-lg hover:bg-gray-100 transition">
-            Login
-          </a>
-        </li>
-      </ul>
-
-      <!-- login user form -->
     </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden bg-white md:hidden px-4 pb-4">
-      <a href="#home" class="block py-2 gray-200">Home</a>
-      <a href="#about" class="block py-2 gray-200">About</a>
-      <a href="#services" class="block py-2 gray-200">Services</a>
-      <a href="#doctors" class="block py-2 gray-200">Healthcare</a>
-      <a href="#contact" class="block py-2 gray-200">Shopping</a>
-
-      <!-- Login Button in Mobile Menu -->
-      <a href="login.html"
-        class="bg-blue-600 inline-block w-full text-center text-white py-2 rounded-lg hover:bg-blue-700 transition">
-        Login
-      </a>
     </div>
   </nav>
+
 
   <!-- Hero Section (Full Screen Background Image) -->
   <section id="home" class="relative h-screen flex items-center justify-center bg-cover bg-center bg-fixed" style="
@@ -77,22 +93,33 @@
         effort.
       </p>
 
-      <div class="relative group">
-        <button
-          class="bg-white text-[#0f766e] hover:bg-[#0d6f63] hover:text-white px-8 py-3 rounded-lg text-lg transition">
-          Register ▾
-        </button>
-        <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-40 bg-white text-gray-700 rounded-lg shadow-lg
-      opacity-0 invisible group-hover:opacity-100 group-hover:visible
-      transition-all duration-200">
-          <a href="../auth/healthcare/doctor_register.html" class="block px-4 py-2 hover:bg-gray-100 rounded-t-lg">
-            Doctor
-          </a>
-          <a href="../auth/healthcare/patient_register.html" class="block px-4 py-2 hover:bg-gray-100 rounded-b-lg">
-            Patient
-          </a>
-        </div>
-      </div>
+      <div class="relative inline-block group">
+  
+  <!-- Button -->
+  <button
+    class="bg-white text-[#0f766e] hover:bg-[#0d6f63] hover:text-white px-8 py-3 rounded-lg text-lg transition">
+    Register ▾
+  </button>
+
+  <!-- Dropdown -->
+  <div
+    class="absolute left-1/2 -translate-x-1/2 mt-2 w-40 bg-white text-gray-700 rounded-lg shadow-lg
+    opacity-0 invisible group-hover:opacity-100 group-hover:visible
+    transition-all duration-200">
+
+    <a href="../auth/healthcare/doctor_register.html"
+      class="block px-4 py-2 hover:bg-gray-100 rounded-t-lg">
+      Doctor
+    </a>
+
+    <a href="../auth/healthcare/patient_register.html"
+      class="block px-4 py-2 hover:bg-gray-100 rounded-b-lg">
+      Patient
+    </a>
+
+  </div>
+</div>
+
 
     </div>
   </section>
@@ -291,14 +318,7 @@
   </footer>
 
   <!-- JavaScript for mobile menu -->
-  <script>
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-
-
+  <script src="../js/index.js">
 
   </script>
 </body>
