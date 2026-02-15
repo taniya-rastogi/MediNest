@@ -18,3 +18,4 @@ router.get("/:specialization", doctorsController.getDoctorsBySpecialization);
 router.get("/:specialization/:doctor_id", doctorsController.getADoctorByIdAndSpecialization);
 
 module.exports = router;
+

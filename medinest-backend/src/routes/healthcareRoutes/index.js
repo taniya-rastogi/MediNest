@@ -30,4 +30,6 @@ router.use("/patient/auth", require("./patientAuthRoutes"));
 // Logout 
 router.post("/logout", require("../../controllers/healthcareController/logoutController").logoutUser);
 
+router.use("/profile", require("./getUserProfileRoutes"));
+
 module.exports = router;
