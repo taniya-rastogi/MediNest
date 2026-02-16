@@ -1,5 +1,4 @@
-# 🏥 MediNest – Smart Healthcare Web Platform
-
+# 🏥 MediNest – All-In-One Plateform For Every Healthcare Need
 MediNest is a scalable healthcare web application designed to streamline doctor discovery, appointment booking, and healthcare service management.
 
 Built with a production-oriented backend architecture using Node.js, Express.js, and MySQL, MediNest focuses on secure authentication, clean API design, and scalable system structure.
