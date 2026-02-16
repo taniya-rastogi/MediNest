@@ -41,7 +41,6 @@ Built with a production-oriented backend architecture using Node.js, Express.js,
 ### 📊 Database Design
 
 * Normalized relational schema
-* Indexed columns for optimized queries
 * Proper foreign key relationships
 * Production-ready constraints
 
@@ -56,6 +55,9 @@ Built with a production-oriented backend architecture using Node.js, Express.js,
 * MySQL
 * JWT Authentication
 * RESTful APIs
+
+### Cloud & Storage
+* Cloudinary (Image Upload & Optimization)
 
 ### Frontend
 
@@ -117,24 +119,24 @@ MediNest/
 MediNest follows:
 
 * REST principles
-* Layered architecture (Route → Controller → Service → DB)
-* Centralized error handling
-* Environment-based configuration
+* Layered MVC Architecture (Route → Controller → Model → Database)
 * Scalable modular folder structure
-
+* JWT-based authentication and role-based access control
+* Middleware-driven request handling (e.g., authentication, validation)
+* Database normalization and structured schema design (MySQL)
+* Optimized API responses and status codes for consistent client handling
+* Frontend-backend separation, enabling a full-stack development workflow
 ---
 
 ## 📈 Scalability Considerations
 
 * Pagination implemented for doctor listing
-* Database indexing for optimized queries
 * Middleware-based authentication
 * Separation of concerns
 * Clean error handling structure
 
 ### Future Enhancements
 
-* Redis caching
 * Payment integration
 * Video consultation module
 * Notification system
@@ -165,9 +167,9 @@ Create a `.env` file:
 PORT=3000
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=yourpassword
-DB_NAME=medinest
-JWT_SECRET=your_secret_key
+DB_PASSWORD=""
+DB_NAME=medinest_healthcare
+JWT_SECRET=dkjfmo9hd57i9ki8f1bh2i3476s5egr75r3u8r3uhy4yhy5h56398uh9w934
 ```
 
 ### 4️⃣ Run the server
@@ -184,7 +186,7 @@ Through MediNest, the following concepts were practiced:
 
 * Production-level authentication design
 * Secure cookie handling
-* Database normalization & indexing
+* Database normalization
 * Backend modular architecture
 * REST API design principles
 * Real-world debugging & edge case handling
@@ -207,4 +209,4 @@ MediNest aims to evolve into a complete digital healthcare ecosystem integrating
 ## 📌 Author
 
 Taniya Rastogi
-Backend-focused developer (Node.js | Express | MySQL)
+| Backend-focused developer (Node.js | Express | MySQL)
