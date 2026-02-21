@@ -13,7 +13,7 @@
   <!-- DASHBOARD HEADER -->
   <div class="max-w-7xl mx-auto text-white mb-8">
     <h1 class="text-3xl font-bold">Doctor Dashboard</h1>
-    <p class="text-sm opacity-90">Welcome back, Dr. Anjali Sharma</p>
+   <p id="welcomeText" class="text-sm opacity-90"></p>
   </div>
 
   <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -24,14 +24,16 @@
 
       <h2 id="doctorName" class="text-xl font-semibold mt-4"></h2>
       <p id="doctorQualification" class="text-[#0f766e] font-medium"></p>
-
       <p id="doctorExperience" class="text-sm text-gray-600 mt-2"></p>
       <p id="doctorHospital" class="text-sm text-gray-600"></p>
       <p id="doctorFee" class="text-sm text-gray-600"></p>
-
-      <p id="doctorBio" class="text-sm text-gray-500 mt-4">
-
-      </p>
+      <p id="doctorBio" class="text-sm text-gray-500 mt-4"></p>
+      <p id="doctorEmail" class="text-sm text-gray-600 mt-2"></p>
+      <p id="doctorPhone" class="text-sm text-gray-600"></p>
+      <p id="doctorGender" class="text-sm text-gray-600"></p>
+      <p id="doctorSpecialization" class="text-sm text-gray-600"></p>
+      <p id="doctorLocation" class="text-sm text-gray-600"></p>
+      <p id="doctorConsultationType" class="text-sm text-gray-600"></p>
 
       <button class="mt-5 w-full bg-gradient-to-r from-[#0f766e] to-[#2dd4bf]
                      text-white py-2 rounded-lg font-semibold">
@@ -51,17 +53,17 @@
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <div class="bg-white rounded-xl p-5 shadow">
           <h3 class="text-sm text-gray-500">Today Appointments</h3>
-          <p class="text-2xl font-bold text-[#0f766e]">12</p>
+          <p id="todayAppointmentsCount" class="text-2xl font-bold text-[#0f766e]"></p>
         </div>
 
         <div class="bg-white rounded-xl p-5 shadow">
           <h3 class="text-sm text-gray-500">Total Patients</h3>
-          <p class="text-2xl font-bold text-[#0f766e]">1,280+</p>
+          <p id="totalPatientsCount" class="text-2xl font-bold text-[#0f766e]"></p>
         </div>
 
         <div class="bg-white rounded-xl p-5 shadow">
           <h3 class="text-sm text-gray-500">Monthly Earnings</h3>
-          <p class="text-2xl font-bold text-[#0f766e]">₹85,000</p>
+          <p id="monthlyEarningsCount" class="text-2xl font-bold text-[#0f766e]">₹</p>
         </div>
       </div>
 
@@ -80,47 +82,7 @@
                 <th class="py-3 px-4 text-left">Action</th>
               </tr>
             </thead>
-            <tbody>
-              <tr class="border-b">
-                <td class="py-3 px-4">Rahul Mehta</td>
-                <td class="py-3 px-4">10:30 AM</td>
-                <td class="py-3 px-4">Chest Pain</td>
-                <td class="py-3 px-4 text-green-600 font-medium">Confirmed</td>
-                <td class="py-3 px-4">
-                  <button class="text-sm text-white px-3 py-1 rounded
-                                 bg-gradient-to-r from-[#0f766e] to-[#2dd4bf]">
-                    View
-                  </button>
-                </td>
-              </tr>
-
-              <tr class="border-b">
-                <td class="py-3 px-4">Sneha Patel</td>
-                <td class="py-3 px-4">12:00 PM</td>
-                <td class="py-3 px-4">BP Check</td>
-                <td class="py-3 px-4 text-yellow-600 font-medium">Pending</td>
-                <td class="py-3 px-4">
-                  <button class="text-sm text-white px-3 py-1 rounded
-                                 bg-gradient-to-r from-[#0f766e] to-[#2dd4bf]">
-                    View
-                  </button>
-                </td>
-              </tr>
-
-              <tr>
-                <td class="py-3 px-4">Amit Kumar</td>
-                <td class="py-3 px-4">02:30 PM</td>
-                <td class="py-3 px-4">Heart Checkup</td>
-                <td class="py-3 px-4 text-red-600 font-medium">Cancelled</td>
-                <td class="py-3 px-4">
-                  <button class="text-sm text-white px-3 py-1 rounded
-                                 bg-gradient-to-r from-[#0f766e] to-[#2dd4bf]">
-                    View
-                  </button>
-                </td>
-              </tr>
-
-            </tbody>
+            <tbody id="appointmentsTableBody"></tbody>
           </table>
         </div>
       </div>
