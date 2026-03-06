@@ -1,7 +1,3 @@
-// Terminal commands:
-// cd medinest-backend
-// node server.js
-
 // Ports info:
 // 5500 / 5501 → Frontend (VS Code Live Server)
 // 3000 → Backend (Node.js / Express server)
@@ -13,7 +9,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 // -------------------- CORS Configuration --------------------
 app.use(cors({

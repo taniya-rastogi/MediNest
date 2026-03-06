@@ -36,8 +36,8 @@ const patientLogin = async (req, res) => {
     const maxAge = 1 * 24 * 60 * 60 * 1000;
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: process.env.COOKIE_SECURE,
+      sameSite: process.env.COOKIE_SAMESITE,
       maxAge,
       path: "/"
     });
