@@ -14,8 +14,8 @@ const port = process.env.PORT;
 // -------------------- CORS Configuration --------------------
 app.use(cors({
   origin: [
-    'http://127.0.0.1:5500', 
-    'http://127.0.0.1:5501' 
+    process.env.FRONTEND_URL_1, 
+    process.env.FRONTEND_URL_2
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
