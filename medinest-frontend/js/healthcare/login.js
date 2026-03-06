@@ -1,4 +1,6 @@
 //login.js
+
+import API_BASE from "./config.js";
 const loginForm = document.getElementById("loginForm");
 
 loginForm.addEventListener("submit", async (e) => {
@@ -18,7 +20,7 @@ loginForm.addEventListener("submit", async (e) => {
 
   // Decide API based on role
   if (role === "patient") {
-    url = "http://127.0.0.1:3000/api/healthcare/patient/auth/login";
+    url = `${API_BASE}/patient/auth/login`;
 
     bodyData = {
       identifier: email,   // backend expects identifier
@@ -27,7 +29,7 @@ loginForm.addEventListener("submit", async (e) => {
   }
 
   if (role === "doctor") {
-    url = "http://127.0.0.1:3000/api/healthcare/doctor/auth/login";
+    url = `${API_BASE}/doctor/auth/login`;
 
     bodyData = {
       email,

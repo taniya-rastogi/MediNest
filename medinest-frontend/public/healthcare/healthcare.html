@@ -59,27 +59,39 @@
     </div>
   </nav>
 
- <!-- HERO / ADVERTISEMENT SECTION -->
+<!-- HERO / ADVERTISEMENT SECTION -->
 <section class="relative m-12 rounded-3xl overflow-hidden shadow-lg">
   <div class="relative h-64 sm:h-96">
     
-    <!-- Image 1 -->
     <div class="absolute inset-0">
       <img
-        class="w-full h-full object-cover animate-slide2"
-        src="/medinest-frontend/images/healthcare_page_images/advertisement/vecteezy_modern-hospital-corridor-illustration_24661719.jpg"
+        class="w-full h-full object-cover"
+        src="/medinest-frontend/images/healthcare_page_images/advertisement/Gemini_Generated_Image_z8j8oxz8j8oxz8j8.png"
         alt="Doctor Consultation"
       >
-      <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-        <h2 class="text-white text-1xl md:text-5xl font-semibold text-center">
-          MediNest (Healthcare)
+
+      <!-- Overlay -->
+      <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center px-6">
+
+        <!-- Main Title -->
+        <h2 
+          class="text-white text-3xl sm:text-4xl md:text-6xl font-bold mb-4"
+          style="text-shadow: 0 3px 10px rgba(2, 15, 10, 0.9);">
+          MediNest - Healthcare
         </h2>
+
+        <!-- Subtitle -->
+        <p 
+          class="text-white text-sm sm:text-base md:text-lg max-w-3xl leading-relaxed"
+          style="text-shadow: 0 2px 6px rgba(0,0,0,0.7);">
+          Connect with qualified doctors, schedule appointments, and manage your healthcare in one convenient place.
+        </p>
+
       </div>
     </div>
 
   </div>
 </section>
-
 
 
   <!-- SEARCH BAR -->
@@ -201,7 +213,7 @@
         </p>
       </div>
     </footer>
-<script src="/medinest-frontend/js/healthcare/specializations.js"></script>
+<script type="module" type="module" src="/medinest-frontend/js/healthcare/specializations.js"></script>
 
 </body>
 </html>

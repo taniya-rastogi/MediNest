@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:3000/api/healthcare";
+import API_BASE from "./config.js";
 
 const params = new URLSearchParams(window.location.search);
 const doctorId = params.get("doctorId");
@@ -23,7 +23,7 @@ const problem = document.getElementById("problem");
 const bookBtn = document.getElementById("bookBtn");
 
 let selectedSlotId = null;
-const API_URL = `http://127.0.0.1:3000/api/healthcare/doctor/specialization/${encodeURIComponent(specialization)}/${encodeURIComponent(doctorId)}`;
+const API_URL = `${API_BASE}/doctor/specialization/${encodeURIComponent(specialization)}/${encodeURIComponent(doctorId)}`;
 
 /* ===================== FETCH DOCTOR ===================== */
 async function loadDoctorProfile() {

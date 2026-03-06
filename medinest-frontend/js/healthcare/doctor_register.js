@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:3000/api/healthcare";
+import API_BASE from "./config.js";
 const REGISTER_URL = `${API_BASE}/doctor/auth/register`;
 const SPECIALIZATIONS_URL = `${API_BASE}/specializations`;
 

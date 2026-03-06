@@ -1,8 +1,11 @@
 //doctor_dashboard.js
+
+import API_BASE from "./config.js";
+
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const response = await fetch(
-      "http://127.0.0.1:3000/api/healthcare/doctor/dashboard",
+      `${API_BASE}/doctor/dashboard`,
       {
         method: "GET",
         credentials: "include", //IMPORTANT for httpOnly cookie
@@ -139,7 +142,7 @@ if (appointments.length === 0) {
   logoutBtn.addEventListener("click", async () => {
     try {
       const response = await fetch(
-        "http://127.0.0.1:3000/api/healthcare/logout",
+        `${API_BASE}/logout`,
         {
           method: "POST",
           credentials: "include",

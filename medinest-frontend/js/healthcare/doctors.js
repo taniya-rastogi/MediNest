@@ -1,3 +1,4 @@
+import API_BASE from "./config.js";
 let currentPage = 1;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -7,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 async function fetchDoctors(page) {
   try {
     const response = await fetch(
-      `http://127.0.0.1:3000/api/healthcare/doctor/specialization/our/all/doctors?page=${(page)}`
+      `${API_BASE}/doctor/specialization/our/all/doctors?page=${(page)}`
     );
 
     const result = await response.json();

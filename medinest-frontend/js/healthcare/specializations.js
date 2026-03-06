@@ -1,4 +1,5 @@
-const API_URL = "http://127.0.0.1:3000/api/healthcare/specializations";
+import API_BASE from "./config.js";
+const API_URL = `${API_BASE}/specializations`;
 
 
 
