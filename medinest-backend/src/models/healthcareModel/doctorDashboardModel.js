@@ -36,7 +36,7 @@ const getTodayAppointmentsCount = async (doctorId) => {
      WHERE doctor_id = ?
        AND appointment_date >= CURDATE()
 AND appointment_date < CURDATE() + INTERVAL 1 DAY
-       AND status = 'confirmed'`,
+       AND status = 'done'`,
     [doctorId]
   );
 
@@ -59,12 +59,13 @@ const getTotalPatients = async (doctorId) => {
 const getMonthlyEarnings = async (doctorId) => {
   const [rows] = await pool.query(
     `SELECT 
-        IFNULL(SUM(fee_at_booking), 0) AS total
-     FROM appointments
-     WHERE doctor_id = ?
-       AND status = 'completed'
-       AND MONTH(appointment_date) = MONTH(CURDATE())
-       AND YEAR(appointment_date) = YEAR(CURDATE())`,
+        IFNULL(SUM(d.consultation_fee), 0) AS total
+     FROM appointments a
+     JOIN doctors d ON a.doctor_id = d.id
+     WHERE a.doctor_id = ?
+       AND a.status = 'done'
+       AND MONTH(a.appointment_date) = MONTH(CURDATE())
+       AND YEAR(a.appointment_date) = YEAR(CURDATE())`,
     [doctorId]
   );
 

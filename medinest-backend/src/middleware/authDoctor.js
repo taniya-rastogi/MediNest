@@ -32,4 +32,10 @@ const authDoctor = (req, res, next) => {
   }
 };
 
-module.exports = authDoctor;
+// middleware/cacheControl.js
+const cacheControl = (req, res, next) => {
+    res.set("Cache-Control", "no-store");
+    next();
+};
+
+module.exports = {authDoctor, cacheControl};

@@ -133,7 +133,7 @@ if (appointments.length === 0) {
   } catch (error) {
     console.error("Dashboard Error:", error);
     alert("Session expired. Please login again.");
-    window.location.href = "../../auth/healthcare/login.html";
+    // window.location.href = "../../auth/healthcare/login.html";
   }
 
   // ------------- Logout functionality --------------------

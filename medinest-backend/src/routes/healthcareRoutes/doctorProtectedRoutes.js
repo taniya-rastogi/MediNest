@@ -4,7 +4,7 @@
 
 const router = require("express").Router();
 const doctorDashboardController = require("../../controllers/healthcareController/doctorDashboardController");
-const authDoctor = require("../../middleware/authDoctor");
+const { authDoctor } = require("../../middleware/authDoctor");
 
 // Protected route
 // http://127.0.0.1:3000/api/healthcare/doctor/dashboard

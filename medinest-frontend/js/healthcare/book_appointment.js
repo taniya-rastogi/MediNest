@@ -300,7 +300,7 @@ bookBtn.addEventListener("click", async (e) => {
   }
 
   bookBtn.disabled = true;
-  bookBtn.textContent = "Booked";
+  bookBtn.textContent = "Booking...";
 
   try {
     const url = `${API_BASE}/book-appointment/create/${specialization}/${doctorId}`;

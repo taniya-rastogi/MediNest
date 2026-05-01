@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping | MediNest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#d1fae5]">
+
+<!-- NAVBAR -->
+<nav class="bg-[#0f766e] text-white">
+  <div class="max-w-7xl mx-auto px-6 flex justify-between h-16 items-center">
+    <h1 class="text-2xl font-bold">MediNest<span class="text-green-400">+</span></h1>
+
+    <div class="hidden md:flex space-x-6 items-center">
+      <a href="../index.html">Home</a>
+      <a href="#">Categories</a>
+      <a href="#">Orders</a>
+
+      <a href="../auth/healthcare/login.html"
+         class="bg-white text-[#0f766e] px-4 py-2 rounded-lg">
+        Login
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="m-10 rounded-3xl overflow-hidden shadow-lg relative">
+  <img src="../../images/shopping_page_images/shopping_cover.jpg"
+       class="w-full h-72 object-cover">
+
+  <div class="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white text-center">
+    <h2 class="text-4xl font-bold mb-2">Medical Shopping</h2>
+    <p class="max-w-xl">Buy medicines, equipment & healthcare essentials at affordable prices.</p>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<div class="max-w-6xl mx-auto px-6 mb-6">
+  <div class="flex">
+    <input type="text" placeholder="Search medicines..."
+      class="w-full p-3 rounded-l-md border">
+    <button class="bg-[#0f766e] text-white px-6 rounded-r-md">Search</button>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="max-w-6xl mx-auto px-6 mb-10">
+  <h3 class="text-2xl font-bold text-[#0f766e] mb-4">Categories</h3>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="bg-white p-4 rounded-lg text-center shadow cursor-pointer">Medicines</div>
+    <div class="bg-white p-4 rounded-lg text-center shadow cursor-pointer">Equipment</div>
+    <div class="bg-white p-4 rounded-lg text-center shadow cursor-pointer">Wellness</div>
+    <div class="bg-white p-4 rounded-lg text-center shadow cursor-pointer">Baby Care</div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="max-w-6xl mx-auto px-6">
+  <h3 class="text-2xl font-bold text-[#0f766e] mb-6">Popular Products</h3>
+
+  <div id="productGrid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+  <!-- Product 1 -->
+  <div class="bg-white p-4 rounded-lg shadow hover:shadow-xl transition">
+    <img src="../../images/shopping_page_images/PCM_pharmacy.jpg" class="h-32 mx-auto object-contain">
+    <h4 class="font-semibold mt-2">Paracetamol Tablets</h4>
+    <p class="text-sm text-gray-500">Fever & Pain Relief</p>
+    <div class="flex justify-between items-center mt-3">
+      <span class="text-[#0f766e] font-bold">₹50</span>
+      <button class="bg-[#0f766e] text-white px-3 py-1 rounded">Add</button>
+    </div>
+  </div>
+
+  <!-- Product 2 -->
+  <div class="bg-white p-4 rounded-lg shadow hover:shadow-xl transition">
+    <img src="../../images/shopping_page_images/digital_thermometer.jpg" class="h-32 mx-auto object-contain">
+    <h4 class="font-semibold mt-2">Digital Thermometer</h4>
+    <p class="text-sm text-gray-500">Accurate temperature check</p>
+    <div class="flex justify-between items-center mt-3">
+      <span class="text-[#0f766e] font-bold">₹199</span>
+      <button class="bg-[#0f766e] text-white px-3 py-1 rounded">Add</button>
+    </div>
+  </div>
+
+  <!-- Product 3 -->
+  <div class="bg-white p-4 rounded-lg shadow hover:shadow-xl transition">
+    <img src="../../images/shopping_page_images/face_mask_pack.jpg" class="h-32 mx-auto object-contain">
+    <h4 class="font-semibold mt-2">Face Mask Pack</h4>
+    <p class="text-sm text-gray-500">Protection from pollution</p>
+    <div class="flex justify-between items-center mt-3">
+      <span class="text-[#0f766e] font-bold">₹120</span>
+      <button class="bg-[#0f766e] text-white px-3 py-1 rounded">Add</button>
+    </div>
+  </div>
+
+  <!-- Product 4 -->
+  <div class="bg-white p-4 rounded-lg shadow hover:shadow-xl transition">
+    <img src="../../images/shopping_page_images/hand_senitizer.jpg" class="h-32 mx-auto object-contain">
+    <h4 class="font-semibold mt-2">Hand Sanitizer</h4>
+    <p class="text-sm text-gray-500">Kills 99.9% germs</p>
+    <div class="flex justify-between items-center mt-3">
+      <span class="text-[#0f766e] font-bold">₹80</span>
+      <button class="bg-[#0f766e] text-white px-3 py-1 rounded">Add</button>
+    </div>
+  </div>
+
+  <!-- Product 5 -->
+  <div class="bg-white p-4 rounded-lg shadow hover:shadow-xl transition">
+    <img src="../../images/shopping_page_images/bp_monitor.jpg" class="h-32 mx-auto object-contain">
+    <h4 class="font-semibold mt-2">BP Monitor</h4>
+    <p class="text-sm text-gray-500">Track blood pressure</p>
+    <div class="flex justify-between items-center mt-3">
+      <span class="text-[#0f766e] font-bold">₹1299</span>
+      <button class="bg-[#0f766e] text-white px-3 py-1 rounded">Add</button>
+    </div>
+  </div>
+
+  <!-- Product 6 -->
+  <div class="bg-white p-4 rounded-lg shadow hover:shadow-xl transition">
+    <img src="../../images/shopping_page_images/glucometer.jpg" class="h-32 mx-auto object-contain">
+    <h4 class="font-semibold mt-2">Glucometer</h4>
+    <p class="text-sm text-gray-500">Check sugar levels</p>
+    <div class="flex justify-between items-center mt-3">
+      <span class="text-[#0f766e] font-bold">₹899</span>
+      <button class="bg-[#0f766e] text-white px-3 py-1 rounded">Add</button>
+    </div>
+  </div>
+
+  <!-- Product 7 -->
+  <div class="bg-white p-4 rounded-lg shadow hover:shadow-xl transition">
+    <img src="../../images/shopping_page_images/vitamin_c_tablets.jpg" class="h-32 mx-auto object-contain">
+    <h4 class="font-semibold mt-2">Vitamin C Tablets</h4>
+    <p class="text-sm text-gray-500">Boost immunity</p>
+    <div class="flex justify-between items-center mt-3">
+      <span class="text-[#0f766e] font-bold">₹150</span>
+      <button class="bg-[#0f766e] text-white px-3 py-1 rounded">Add</button>
+    </div>
+  </div>
+
+  <!-- Product 8 -->
+  <div class="bg-white p-4 rounded-lg shadow hover:shadow-xl transition">
+    <img src="../../images/shopping_page_images/adhesive_bandages.jpg" class="h-32 mx-auto object-contain">
+    <h4 class="font-semibold mt-2">Adhesive Bandages</h4>
+    <p class="text-sm text-gray-500">First aid essentials</p>
+    <div class="flex justify-between items-center mt-3">
+      <span class="text-[#0f766e] font-bold">₹60</span>
+      <button class="bg-[#0f766e] text-white px-3 py-1 rounded">Add</button>
+    </div>
+  </div>
+
+  <!-- Product 9 -->
+  <div class="bg-white p-4 rounded-lg shadow hover:shadow-xl transition">
+    <img src="../../images/shopping_page_images/protein_powder.jpg" class="h-32 mx-auto object-contain">
+    <h4 class="font-semibold mt-2">Protein Powder</h4>
+    <p class="text-sm text-gray-500">Nutrition supplement</p>
+    <div class="flex justify-between items-center mt-3">
+      <span class="text-[#0f766e] font-bold">₹1499</span>
+      <button class="bg-[#0f766e] text-white px-3 py-1 rounded">Add</button>
+    </div>
+  </div>
+
+</div>
+</section>
+
+</body>
+</html>

@@ -12,13 +12,13 @@ const bookAppointmentCreateController = require("../../controllers/healthcareCon
 
 
 // Book appointment form
-// Example: GET /api/healthcare/book-appointment/Psychology/11
+// Example: GET /api/healthcare/book-appointment/Psychology/45
 // GET /api/healthcare/book-appointment/form/:specialization/:doctor_id (will get patient_id from token if needed)
 router.get("/form/:specialization/:doctorId", optionalAuthPatient, bookAppointmentFormController.appointmentForm);
 
 
 // Book appointment create
-// Example: POST /api/healthcare/book-appointment/Psychology/11
+// Example: POST /api/healthcare/book-appointment/Psychology/45
 // POST /api/healthcare/book-appointment/create/:specialization/:doctor_id (will get patient_id from token)
 router.post("/create/:specialization/:doctorId", authPatient, upload.single("image_url"), bookAppointmentCreateController.appointmentCreate);
 
